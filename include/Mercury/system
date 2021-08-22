@@ -1,0 +1,17 @@
+/********************************************************************************
+ *  File Name:
+ *    system
+ *
+ *  Description:
+ *    Mercury System Includes
+ *
+ *  2021 | Brandon Braun | brandonbraun653@gmail.com
+ ********************************************************************************/
+
+#pragma once
+#ifndef MERCURY_SYSTEM_INCLUDES
+#define MERCURY_SYSTEM_INCLUDES
+
+#include <Mercury/source/sys/m_sys.hpp>
+
+#endif /* !MERCURY_SYSTEM_INCLUDES */

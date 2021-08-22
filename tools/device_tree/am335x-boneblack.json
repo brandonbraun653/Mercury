@@ -1,0 +1,2341 @@
+{
+    "compatible": ["strings", "ti,am335x-bone-black", "ti,am335x-bone", "ti,am33xx"],
+    "interrupt-parent": ["words", "0x00000001"],
+    "#address-cells": ["words", "0x00000001"],
+    "#size-cells": ["words", "0x00000001"],
+    "model": ["strings", "TI AM335x BeagleBone Black"],
+    "chosen": {
+        "stdout-path": ["strings", "/ocp/serial@44e09000"],
+        "base_dtb": ["strings", "am335x-boneblack.dts"],
+        "base_dtb_timestamp": ["strings", "Tue Mar 31 19:37:24 2020"]
+    },
+    "aliases": {
+        "i2c0": ["strings", "/ocp/i2c@44e0b000"],
+        "i2c1": ["strings", "/ocp/i2c@4802a000"],
+        "i2c2": ["strings", "/ocp/i2c@4819c000"],
+        "serial0": ["strings", "/ocp/serial@44e09000"],
+        "serial1": ["strings", "/ocp/serial@48022000"],
+        "serial2": ["strings", "/ocp/serial@48024000"],
+        "serial3": ["strings", "/ocp/serial@481a6000"],
+        "serial4": ["strings", "/ocp/serial@481a8000"],
+        "serial5": ["strings", "/ocp/serial@481aa000"],
+        "d-can0": ["strings", "/ocp/can@481cc000"],
+        "d-can1": ["strings", "/ocp/can@481d0000"],
+        "usb0": ["strings", "/ocp/usb@47400000/usb@47401000"],
+        "usb1": ["strings", "/ocp/usb@47400000/usb@47401800"],
+        "phy0": ["strings", "/ocp/usb@47400000/usb-phy@47401300"],
+        "phy1": ["strings", "/ocp/usb@47400000/usb-phy@47401b00"],
+        "ethernet0": ["strings", "/ocp/ethernet@4a100000/slave@4a100200"],
+        "ethernet1": ["strings", "/ocp/ethernet@4a100000/slave@4a100300"],
+        "spi0": ["strings", "/ocp/spi@48030000"],
+        "spi1": ["strings", "/ocp/spi@481a0000"],
+        "phandle": ["words", "0x00000066"]
+    },
+    "cpus": {
+        "#address-cells": ["words", "0x00000001"],
+        "#size-cells": ["words", "0x00000000"],
+        "cpu@0": {
+            "compatible": ["strings", "arm,cortex-a8"],
+            "enable-method": ["strings", "ti,am3352"],
+            "device_type": ["strings", "cpu"],
+            "reg": ["words", "0x00000000"],
+            "operating-points-v2": ["words", "0x00000002"],
+            "clocks": ["words", "0x00000003"],
+            "clock-names": ["strings", "cpu"],
+            "clock-latency": ["words", "0x000493e0"],
+            "cpu-idle-states": ["words", "0x00000004"],
+            "cpu0-supply": ["words", "0x00000005"]
+        },
+        "idle-states": {
+            "mpu_gate": {
+                "compatible": ["strings", "arm,idle-state"],
+                "entry-latency-us": ["words", "0x00000028"],
+                "exit-latency-us": ["words", "0x0000005a"],
+                "min-residency-us": ["words", "0x0000012c"],
+                "ti,idle-wkup-m3": null,
+                "phandle": ["words", "0x00000004"]
+            }
+        }
+    },
+    "opp-table": {
+        "compatible": ["strings", "operating-points-v2-ti-cpu"],
+        "syscon": ["words", "0x00000006"],
+        "phandle": ["words", "0x00000002"],
+        "opp50-300000000": {
+            "opp-hz": ["words", "0x00000000", "0x11e1a300"],
+            "opp-microvolt": ["words", "0x000e7ef0", "0x000e34b8", "0x000ec928"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000010"],
+            "opp-suspend": null
+        },
+        "opp100-275000000": {
+            "opp-hz": ["words", "0x00000000", "0x10642ac0"],
+            "opp-microvolt": ["words", "0x0010c8e0", "0x001072f0", "0x00111ed0"],
+            "opp-supported-hw": ["words", "0x00000001", "0x000000ff"],
+            "opp-suspend": null
+        },
+        "opp100-300000000": {
+            "opp-hz": ["words", "0x00000000", "0x11e1a300"],
+            "opp-microvolt": ["words", "0x0010c8e0", "0x001072f0", "0x00111ed0"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000020"],
+            "opp-suspend": null
+        },
+        "opp100-500000000": {
+            "opp-hz": ["words", "0x00000000", "0x1dcd6500"],
+            "opp-microvolt": ["words", "0x0010c8e0", "0x001072f0", "0x00111ed0"],
+            "opp-supported-hw": ["words", "0x00000001", "0x0000ffff"]
+        },
+        "opp100-600000000": {
+            "opp-hz": ["words", "0x00000000", "0x23c34600"],
+            "opp-microvolt": ["words", "0x0010c8e0", "0x001072f0", "0x00111ed0"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000040"]
+        },
+        "opp120-600000000": {
+            "opp-hz": ["words", "0x00000000", "0x23c34600"],
+            "opp-microvolt": ["words", "0x00124f80", "0x0011f1c0", "0x0012ad40"],
+            "opp-supported-hw": ["words", "0x00000001", "0x0000ffff"]
+        },
+        "opp120-720000000": {
+            "opp-hz": ["words", "0x00000000", "0x2aea5400"],
+            "opp-microvolt": ["words", "0x00124f80", "0x0011f1c0", "0x0012ad40"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000080"]
+        },
+        "oppturbo-720000000": {
+            "opp-hz": ["words", "0x00000000", "0x2aea5400"],
+            "opp-microvolt": ["words", "0x001339e0", "0x0012d770", "0x00139c50"],
+            "opp-supported-hw": ["words", "0x00000001", "0x0000ffff"]
+        },
+        "oppturbo-800000000": {
+            "opp-hz": ["words", "0x00000000", "0x2faf0800"],
+            "opp-microvolt": ["words", "0x001339e0", "0x0012d770", "0x00139c50"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000100"]
+        },
+        "oppnitro-1000000000": {
+            "opp-hz": ["words", "0x00000000", "0x3b9aca00"],
+            "opp-microvolt": ["words", "0x001437c8", "0x0013d044", "0x00149f4c"],
+            "opp-supported-hw": ["words", "0x00000006", "0x00000100"]
+        }
+    },
+    "pmu@4b000000": {
+        "compatible": ["strings", "arm,cortex-a8-pmu"],
+        "interrupts": ["words", "0x00000003"],
+        "reg": ["words", "0x4b000000", "0x01000000"],
+        "ti,hwmods": ["strings", "debugss"]
+    },
+    "soc": {
+        "compatible": ["strings", "ti,omap-infra"],
+        "mpu": {
+            "compatible": ["strings", "ti,omap3-mpu"],
+            "ti,hwmods": ["strings", "mpu"],
+            "pm-sram": ["words", "0x00000007", "0x00000008"]
+        }
+    },
+    "ocp": {
+        "compatible": ["strings", "simple-bus"],
+        "#address-cells": ["words", "0x00000001"],
+        "#size-cells": ["words", "0x00000001"],
+        "ranges": null,
+        "ti,hwmods": ["strings", "l3_main"],
+        "phandle": ["words", "0x00000067"],
+        "l4_wkup@44c00000": {
+            "compatible": ["strings", "ti,am3-l4-wkup", "simple-bus"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "ranges": ["words", "0x00000000", "0x44c00000", "0x00280000"],
+            "phandle": ["words", "0x00000068"],
+            "wkup_m3@100000": {
+                "compatible": ["strings", "ti,am3352-wkup-m3"],
+                "reg": ["words", "0x00100000", "0x00004000", "0x00180000", "0x00002000"],
+                "reg-names": ["strings", "umem", "dmem"],
+                "ti,hwmods": ["strings", "wkup_m3"],
+                "ti,pm-firmware": ["strings", "am335x-pm-firmware.elf"],
+                "phandle": ["words", "0x00000024"]
+            },
+            "prcm@200000": {
+                "compatible": ["strings", "ti,am3-prcm", "simple-bus"],
+                "reg": ["words", "0x00200000", "0x00004000"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "ranges": ["words", "0x00000000", "0x00200000", "0x00004000"],
+                "phandle": ["words", "0x00000069"],
+                "clocks": {
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000000"],
+                    "phandle": ["words", "0x0000006a"],
+                    "clk_32768_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x00008000"],
+                        "phandle": ["words", "0x00000018"]
+                    },
+                    "clk_rc32k_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x00007d00"],
+                        "phandle": ["words", "0x00000017"]
+                    },
+                    "virt_19200000_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x0124f800"],
+                        "phandle": ["words", "0x0000001f"]
+                    },
+                    "virt_24000000_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x016e3600"],
+                        "phandle": ["words", "0x00000020"]
+                    },
+                    "virt_25000000_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x017d7840"],
+                        "phandle": ["words", "0x00000021"]
+                    },
+                    "virt_26000000_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x018cba80"],
+                        "phandle": ["words", "0x00000022"]
+                    },
+                    "tclkin_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-clock"],
+                        "clock-frequency": ["words", "0x00b71b00"],
+                        "phandle": ["words", "0x00000016"]
+                    },
+                    "dpll_core_ck@490": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-core-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000009"],
+                        "reg": ["words", "0x00000490", "0x0000045c", "0x00000468"],
+                        "phandle": ["words", "0x0000000a"]
+                    },
+                    "dpll_core_x2_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-x2-clock"],
+                        "clocks": ["words", "0x0000000a"],
+                        "phandle": ["words", "0x0000000b"]
+                    },
+                    "dpll_core_m4_ck@480": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000b"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x00000480"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x00000012"]
+                    },
+                    "dpll_core_m5_ck@484": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000b"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x00000484"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x0000001a"]
+                    },
+                    "dpll_core_m6_ck@4d8": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000b"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x000004d8"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x0000006b"]
+                    },
+                    "dpll_mpu_ck@488": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000009"],
+                        "reg": ["words", "0x00000488", "0x00000420", "0x0000042c"],
+                        "phandle": ["words", "0x00000003"]
+                    },
+                    "dpll_mpu_m2_ck@4a8": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x00000003"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x000004a8"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x0000006c"]
+                    },
+                    "dpll_ddr_ck@494": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-no-gate-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000009"],
+                        "reg": ["words", "0x00000494", "0x00000434", "0x00000440"],
+                        "phandle": ["words", "0x0000000c"]
+                    },
+                    "dpll_ddr_m2_ck@4a0": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000c"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x000004a0"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x0000000d"]
+                    },
+                    "dpll_ddr_m2_div2_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x0000000d"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000006d"]
+                    },
+                    "dpll_disp_ck@498": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-no-gate-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000009"],
+                        "reg": ["words", "0x00000498", "0x00000448", "0x00000454"],
+                        "phandle": ["words", "0x0000000e"]
+                    },
+                    "dpll_disp_m2_ck@4a4": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000e"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x000004a4"],
+                        "ti,index-starts-at-one": null,
+                        "ti,set-rate-parent": null,
+                        "phandle": ["words", "0x00000014"]
+                    },
+                    "dpll_per_ck@48c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,am3-dpll-no-gate-j-type-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000009"],
+                        "reg": ["words", "0x0000048c", "0x00000470", "0x0000049c"],
+                        "phandle": ["words", "0x0000000f"]
+                    },
+                    "dpll_per_m2_ck@4ac": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000000f"],
+                        "ti,max-div": ["words", "0x0000001f"],
+                        "reg": ["words", "0x000004ac"],
+                        "ti,index-starts-at-one": null,
+                        "phandle": ["words", "0x00000010"]
+                    },
+                    "dpll_per_m2_div4_wkupdm_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000010"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000004"],
+                        "phandle": ["words", "0x0000006e"]
+                    },
+                    "dpll_per_m2_div4_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000010"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000004"],
+                        "phandle": ["words", "0x0000006f"]
+                    },
+                    "clk_24mhz": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000010"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000008"],
+                        "phandle": ["words", "0x00000011"]
+                    },
+                    "clkdiv32k_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000011"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x000002dc"],
+                        "phandle": ["words", "0x00000070"]
+                    },
+                    "l3_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x00000013"]
+                    },
+                    "pruss_ocp_gclk@530": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000013", "0x00000014"],
+                        "reg": ["words", "0x00000530"],
+                        "phandle": ["words", "0x00000071"]
+                    },
+                    "mmu_fck@914": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,gate-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "ti,bit-shift": ["words", "0x00000001"],
+                        "reg": ["words", "0x00000914"],
+                        "phandle": ["words", "0x00000072"]
+                    },
+                    "timer1_fck@528": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000009", "0x00000015", "0x00000138", "0x00000000", "0x00000016", "0x00000017", "0x00000018"],
+                        "reg": ["words", "0x00000528"],
+                        "phandle": ["words", "0x00000036"]
+                    },
+                    "timer2_fck@508": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x00000508"],
+                        "phandle": ["words", "0x00000037"]
+                    },
+                    "timer3_fck@50c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x0000050c"],
+                        "phandle": ["words", "0x00000073"]
+                    },
+                    "timer4_fck@510": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x00000510"],
+                        "phandle": ["words", "0x00000074"]
+                    },
+                    "timer5_fck@518": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x00000518"],
+                        "phandle": ["words", "0x00000075"]
+                    },
+                    "timer6_fck@51c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x0000051c"],
+                        "phandle": ["words", "0x00000076"]
+                    },
+                    "timer7_fck@504": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000016", "0x00000009", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x00000504"],
+                        "phandle": ["words", "0x00000077"]
+                    },
+                    "usbotg_fck@47c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,gate-clock"],
+                        "clocks": ["words", "0x0000000f"],
+                        "ti,bit-shift": ["words", "0x00000008"],
+                        "reg": ["words", "0x0000047c"],
+                        "phandle": ["words", "0x00000078"]
+                    },
+                    "dpll_core_m4_div2_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000019"]
+                    },
+                    "ieee5000_fck@e4": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,gate-clock"],
+                        "clocks": ["words", "0x00000019"],
+                        "ti,bit-shift": ["words", "0x00000001"],
+                        "reg": ["words", "0x000000e4"],
+                        "phandle": ["words", "0x00000079"]
+                    },
+                    "wdt1_fck@538": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000017", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x00000538"],
+                        "phandle": ["words", "0x0000007a"]
+                    },
+                    "l4_rtc_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000007b"]
+                    },
+                    "l4hs_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x0000007c"]
+                    },
+                    "l3s_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000019"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x0000007d"]
+                    },
+                    "l4fw_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000019"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x0000007e"]
+                    },
+                    "l4ls_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000019"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x00000023"]
+                    },
+                    "sysclk_div_ck": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000012"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000001"],
+                        "phandle": ["words", "0x0000007f"]
+                    },
+                    "cpsw_125mhz_gclk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x0000001a"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000040"]
+                    },
+                    "cpsw_cpts_rft_clk@520": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x0000001a", "0x00000012"],
+                        "reg": ["words", "0x00000520"],
+                        "phandle": ["words", "0x00000041"]
+                    },
+                    "gpio0_dbclk_mux_ck@53c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000017", "0x00000018", "0x00000015", "0x00000138", "0x00000000"],
+                        "reg": ["words", "0x0000053c"],
+                        "phandle": ["words", "0x00000080"]
+                    },
+                    "lcd_gclk@534": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000014", "0x0000001a", "0x00000010"],
+                        "reg": ["words", "0x00000534"],
+                        "ti,set-rate-parent": null,
+                        "phandle": ["words", "0x0000001c"]
+                    },
+                    "mmc_clk": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "fixed-factor-clock"],
+                        "clocks": ["words", "0x00000010"],
+                        "clock-mult": ["words", "0x00000001"],
+                        "clock-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000081"]
+                    },
+                    "gfx_fclk_clksel_ck@52c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000012", "0x00000010"],
+                        "ti,bit-shift": ["words", "0x00000001"],
+                        "reg": ["words", "0x0000052c"],
+                        "phandle": ["words", "0x0000001b"]
+                    },
+                    "gfx_fck_div_ck@52c": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000001b"],
+                        "reg": ["words", "0x0000052c"],
+                        "ti,max-div": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000004a"]
+                    },
+                    "sysclkout_pre_ck@700": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,mux-clock"],
+                        "clocks": ["words", "0x00000018", "0x00000013", "0x0000000d", "0x00000010", "0x0000001c"],
+                        "reg": ["words", "0x00000700"],
+                        "phandle": ["words", "0x0000001d"]
+                    },
+                    "clkout2_div_ck@700": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,divider-clock"],
+                        "clocks": ["words", "0x0000001d"],
+                        "ti,bit-shift": ["words", "0x00000003"],
+                        "ti,max-div": ["words", "0x00000008"],
+                        "reg": ["words", "0x00000700"],
+                        "phandle": ["words", "0x0000001e"]
+                    },
+                    "clkout2_ck@700": {
+                        "#clock-cells": ["words", "0x00000000"],
+                        "compatible": ["strings", "ti,gate-clock"],
+                        "clocks": ["words", "0x0000001e"],
+                        "ti,bit-shift": ["words", "0x00000007"],
+                        "reg": ["words", "0x00000700"],
+                        "phandle": ["words", "0x00000082"]
+                    }
+                },
+                "clockdomains": {
+                    "phandle": ["words", "0x00000083"]
+                },
+                "l4_per_cm@0": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000000", "0x00000200"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000000", "0x00000200"],
+                    "phandle": ["words", "0x00000084"],
+                    "clk@14": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000014", "0x0000013c"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000015"]
+                    }
+                },
+                "l4_wkup_cm@400": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000400", "0x00000100"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000400", "0x00000100"],
+                    "phandle": ["words", "0x00000085"],
+                    "clk@4": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000004", "0x000000d4"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000086"]
+                    }
+                },
+                "mpu_cm@600": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000600", "0x00000100"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000600", "0x00000100"],
+                    "phandle": ["words", "0x00000087"],
+                    "clk@4": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000004", "0x00000004"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x00000088"]
+                    }
+                },
+                "l4_rtc_cm@800": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000800", "0x00000100"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000800", "0x00000100"],
+                    "phandle": ["words", "0x00000089"],
+                    "clk@0": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000000", "0x00000004"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000008a"]
+                    }
+                },
+                "gfx_l3_cm@900": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000900", "0x00000100"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000900", "0x00000100"],
+                    "phandle": ["words", "0x0000008b"],
+                    "clk@4": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000004", "0x00000004"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000008c"]
+                    }
+                },
+                "l4_cefuse_cm@a00": {
+                    "compatible": ["strings", "ti,omap4-cm"],
+                    "reg": ["words", "0x00000a00", "0x00000100"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000a00", "0x00000100"],
+                    "phandle": ["words", "0x0000008d"],
+                    "clk@20": {
+                        "compatible": ["strings", "ti,clkctrl"],
+                        "reg": ["words", "0x00000020", "0x00000004"],
+                        "#clock-cells": ["words", "0x00000002"],
+                        "phandle": ["words", "0x0000008e"]
+                    }
+                }
+            },
+            "scm@210000": {
+                "compatible": ["strings", "ti,am3-scm", "simple-bus"],
+                "reg": ["words", "0x00210000", "0x00002000"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "#pinctrl-cells": ["words", "0x00000001"],
+                "ranges": ["words", "0x00000000", "0x00210000", "0x00002000"],
+                "phandle": ["words", "0x0000008f"],
+                "pinmux@800": {
+                    "compatible": ["strings", "pinctrl-single"],
+                    "reg": ["words", "0x00000800", "0x00000238"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000000"],
+                    "#pinctrl-cells": ["words", "0x00000001"],
+                    "pinctrl-single,register-width": ["words", "0x00000020"],
+                    "pinctrl-single,function-mask": ["words", "0x0000007f"],
+                    "phandle": ["words", "0x00000090"],
+                    "user_leds_s0": {
+                        "pinctrl-single,pins": ["words", "0x00000054", "0x00000007", "0x00000058", "0x00000017", "0x0000005c", "0x00000007", "0x00000060", "0x00000017"],
+                        "phandle": ["words", "0x0000005f"]
+                    },
+                    "pinmux_i2c0_pins": {
+                        "pinctrl-single,pins": ["words", "0x00000188", "0x00000030", "0x0000018c", "0x00000030"],
+                        "phandle": ["words", "0x0000002c"]
+                    },
+                    "pinmux_uart0_pins": {
+                        "pinctrl-single,pins": ["words", "0x00000170", "0x00000030", "0x00000174", "0x00000000"],
+                        "phandle": ["words", "0x0000002b"]
+                    },
+                    "cpsw_default": {
+                        "pinctrl-single,pins": ["words", "0x00000110", "0x00000030", "0x00000114", "0x00000000", "0x00000118", "0x00000030", "0x0000011c", "0x00000000", "0x00000120", "0x00000000", "0x00000124", "0x00000000", "0x00000128", "0x00000000", "0x0000012c", "0x00000030", "0x00000130", "0x00000030", "0x00000134", "0x00000030", "0x00000138", "0x00000030", "0x0000013c", "0x00000030", "0x00000140", "0x00000030"],
+                        "phandle": ["words", "0x00000042"]
+                    },
+                    "cpsw_sleep": {
+                        "pinctrl-single,pins": ["words", "0x00000110", "0x00000027", "0x00000114", "0x00000027", "0x00000118", "0x00000027", "0x0000011c", "0x00000027", "0x00000120", "0x00000027", "0x00000124", "0x00000027", "0x00000128", "0x00000027", "0x0000012c", "0x00000027", "0x00000130", "0x00000027", "0x00000134", "0x00000027", "0x00000138", "0x00000027", "0x0000013c", "0x00000027", "0x00000140", "0x00000027"],
+                        "phandle": ["words", "0x00000043"]
+                    },
+                    "davinci_mdio_default": {
+                        "pinctrl-single,pins": ["words", "0x00000148", "0x00000030", "0x0000014c", "0x00000010"],
+                        "phandle": ["words", "0x00000044"]
+                    },
+                    "davinci_mdio_sleep": {
+                        "pinctrl-single,pins": ["words", "0x00000148", "0x00000027", "0x0000014c", "0x00000027"],
+                        "phandle": ["words", "0x00000045"]
+                    },
+                    "pinmux_mmc1_pins": {
+                        "pinctrl-single,pins": ["words", "0x00000160", "0x0000002f", "0x000000fc", "0x00000030", "0x000000f8", "0x00000030", "0x000000f4", "0x00000030", "0x000000f0", "0x00000030", "0x00000104", "0x00000030", "0x00000100", "0x00000030"],
+                        "phandle": ["words", "0x00000030"]
+                    },
+                    "pinmux_emmc_pins": {
+                        "pinctrl-single,pins": ["words", "0x00000080", "0x00000032", "0x00000084", "0x00000032", "0x00000000", "0x00000031", "0x00000004", "0x00000031", "0x00000008", "0x00000031", "0x0000000c", "0x00000031", "0x00000010", "0x00000031", "0x00000014", "0x00000031", "0x00000018", "0x00000031", "0x0000001c", "0x00000031"],
+                        "phandle": ["words", "0x00000033"]
+                    },
+                    "pinmux_P9_19_default_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000033"],
+                        "phandle": ["words", "0x0000004b"]
+                    },
+                    "pinmux_P9_19_gpio_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x0000002f"],
+                        "phandle": ["words", "0x0000004c"]
+                    },
+                    "pinmux_P9_19_gpio_pu_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000037"],
+                        "phandle": ["words", "0x0000004d"]
+                    },
+                    "pinmux_P9_19_gpio_pd_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000027"],
+                        "phandle": ["words", "0x0000004e"]
+                    },
+                    "pinmux_P9_19_gpio_input_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x0000002f"],
+                        "phandle": ["words", "0x0000004f"]
+                    },
+                    "pinmux_P9_19_timer_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000031"],
+                        "phandle": ["words", "0x00000054"]
+                    },
+                    "pinmux_P9_19_can_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000032"],
+                        "phandle": ["words", "0x00000051"]
+                    },
+                    "pinmux_P9_19_i2c_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000033"],
+                        "phandle": ["words", "0x00000052"]
+                    },
+                    "pinmux_P9_19_spi_cs_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000034"],
+                        "phandle": ["words", "0x00000050"]
+                    },
+                    "pinmux_P9_19_pru_uart_pin": {
+                        "pinctrl-single,pins": ["words", "0x0000017c", "0x00000035"],
+                        "phandle": ["words", "0x00000053"]
+                    },
+                    "pinmux_P9_20_default_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000033"],
+                        "phandle": ["words", "0x00000055"]
+                    },
+                    "pinmux_P9_20_gpio_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x0000002f"],
+                        "phandle": ["words", "0x00000056"]
+                    },
+                    "pinmux_P9_20_gpio_pu_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000037"],
+                        "phandle": ["words", "0x00000057"]
+                    },
+                    "pinmux_P9_20_gpio_pd_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000027"],
+                        "phandle": ["words", "0x00000058"]
+                    },
+                    "pinmux_P9_20_gpio_input_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x0000002f"],
+                        "phandle": ["words", "0x00000059"]
+                    },
+                    "pinmux_P9_20_timer_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000031"],
+                        "phandle": ["words", "0x0000005e"]
+                    },
+                    "pinmux_P9_20_can_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000012"],
+                        "phandle": ["words", "0x0000005b"]
+                    },
+                    "pinmux_P9_20_i2c_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000033"],
+                        "phandle": ["words", "0x0000005c"]
+                    },
+                    "pinmux_P9_20_spi_cs_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000034"],
+                        "phandle": ["words", "0x0000005a"]
+                    },
+                    "pinmux_P9_20_pru_uart_pin": {
+                        "pinctrl-single,pins": ["words", "0x00000178", "0x00000035"],
+                        "phandle": ["words", "0x0000005d"]
+                    },
+                    "nxp_hdmi_bonelt_pins": {
+                        "pinctrl-single,pins": ["words", "0x000000a0", "0x00000008", "0x000000a4", "0x00000008", "0x000000a8", "0x00000008", "0x000000ac", "0x00000008", "0x000000b0", "0x00000008", "0x000000b4", "0x00000008", "0x000000b8", "0x00000008", "0x000000bc", "0x00000008", "0x000000c0", "0x00000008", "0x000000c4", "0x00000008", "0x000000c8", "0x00000008", "0x000000cc", "0x00000008", "0x000000d0", "0x00000008", "0x000000d4", "0x00000008", "0x000000d8", "0x00000008", "0x000000dc", "0x00000008", "0x000000e0", "0x00000000", "0x000000e4", "0x00000000", "0x000000e8", "0x00000000", "0x000000ec", "0x00000000"],
+                        "phandle": ["words", "0x0000002d"]
+                    },
+                    "mcasp0_pins": {
+                        "pinctrl-single,pins": ["words", "0x000001ac", "0x00000030", "0x0000019c", "0x00000002", "0x00000194", "0x00000010", "0x00000190", "0x00000000", "0x0000006c", "0x00000007"],
+                        "phandle": ["words", "0x00000049"]
+                    }
+                },
+                "scm_conf@0": {
+                    "compatible": ["strings", "syscon", "simple-bus"],
+                    "reg": ["words", "0x00000000", "0x00000800"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000001"],
+                    "ranges": ["words", "0x00000000", "0x00000000", "0x00000800"],
+                    "phandle": ["words", "0x00000006"],
+                    "clocks": {
+                        "#address-cells": ["words", "0x00000001"],
+                        "#size-cells": ["words", "0x00000000"],
+                        "phandle": ["words", "0x00000091"],
+                        "sys_clkin_ck@40": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "ti,mux-clock"],
+                            "clocks": ["words", "0x0000001f", "0x00000020", "0x00000021", "0x00000022"],
+                            "ti,bit-shift": ["words", "0x00000016"],
+                            "reg": ["words", "0x00000040"],
+                            "phandle": ["words", "0x00000009"]
+                        },
+                        "adc_tsc_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000092"]
+                        },
+                        "dcan0_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000034"]
+                        },
+                        "dcan1_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000035"]
+                        },
+                        "mcasp0_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000093"]
+                        },
+                        "mcasp1_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000094"]
+                        },
+                        "smartreflex0_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000095"]
+                        },
+                        "smartreflex1_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000096"]
+                        },
+                        "sha0_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000097"]
+                        },
+                        "aes0_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000098"]
+                        },
+                        "rng_fck": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "fixed-factor-clock"],
+                            "clocks": ["words", "0x00000009"],
+                            "clock-mult": ["words", "0x00000001"],
+                            "clock-div": ["words", "0x00000001"],
+                            "phandle": ["words", "0x00000099"]
+                        },
+                        "ehrpwm0_tbclk@44e10664": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "ti,gate-clock"],
+                            "clocks": ["words", "0x00000023"],
+                            "ti,bit-shift": ["words", "0x00000000"],
+                            "reg": ["words", "0x00000664"],
+                            "phandle": ["words", "0x0000003d"]
+                        },
+                        "ehrpwm1_tbclk@44e10664": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "ti,gate-clock"],
+                            "clocks": ["words", "0x00000023"],
+                            "ti,bit-shift": ["words", "0x00000001"],
+                            "reg": ["words", "0x00000664"],
+                            "phandle": ["words", "0x0000003e"]
+                        },
+                        "ehrpwm2_tbclk@44e10664": {
+                            "#clock-cells": ["words", "0x00000000"],
+                            "compatible": ["strings", "ti,gate-clock"],
+                            "clocks": ["words", "0x00000023"],
+                            "ti,bit-shift": ["words", "0x00000002"],
+                            "reg": ["words", "0x00000664"],
+                            "phandle": ["words", "0x0000003f"]
+                        }
+                    }
+                },
+                "wkup_m3_ipc@1324": {
+                    "compatible": ["strings", "ti,am3352-wkup-m3-ipc"],
+                    "reg": ["words", "0x00001324", "0x00000024"],
+                    "interrupts": ["words", "0x0000004e"],
+                    "ti,rproc": ["words", "0x00000024"],
+                    "mboxes": ["words", "0x00000025", "0x00000026"],
+                    "ti,scale-data-fw": ["strings", "am335x-bone-scale-data.bin"],
+                    "phandle": ["words", "0x0000009a"]
+                },
+                "dma-router@f90": {
+                    "compatible": ["strings", "ti,am335x-edma-crossbar"],
+                    "reg": ["words", "0x00000f90", "0x00000040"],
+                    "#dma-cells": ["words", "0x00000003"],
+                    "dma-requests": ["words", "0x00000020"],
+                    "dma-masters": ["words", "0x00000027"],
+                    "phandle": ["words", "0x0000002f"]
+                },
+                "clockdomains": {
+                    "phandle": ["words", "0x0000009b"]
+                }
+            }
+        },
+        "interrupt-controller@48200000": {
+            "compatible": ["strings", "ti,am33xx-intc"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000001"],
+            "reg": ["words", "0x48200000", "0x00001000"],
+            "phandle": ["words", "0x00000001"]
+        },
+        "edma@49000000": {
+            "compatible": ["strings", "ti,edma3-tpcc"],
+            "ti,hwmods": ["strings", "tpcc"],
+            "reg": ["words", "0x49000000", "0x00010000"],
+            "reg-names": ["strings", "edma3_cc"],
+            "interrupts": ["words", "0x0000000c", "0x0000000d", "0x0000000e"],
+            "interrupt-names": ["strings", "edma3_ccint", "edma3_mperr", "edma3_ccerrint"],
+            "dma-requests": ["words", "0x00000040"],
+            "#dma-cells": ["words", "0x00000002"],
+            "ti,tptcs": ["words", "0x00000028", "0x00000007", "0x00000029", "0x00000005", "0x0000002a", "0x00000000"],
+            "ti,edma-memcpy-channels": ["words", "0x00000014", "0x00000015"],
+            "phandle": ["words", "0x00000027"]
+        },
+        "tptc@49800000": {
+            "compatible": ["strings", "ti,edma3-tptc"],
+            "ti,hwmods": ["strings", "tptc0"],
+            "reg": ["words", "0x49800000", "0x00100000"],
+            "interrupts": ["words", "0x00000070"],
+            "interrupt-names": ["strings", "edma3_tcerrint"],
+            "phandle": ["words", "0x00000028"]
+        },
+        "tptc@49900000": {
+            "compatible": ["strings", "ti,edma3-tptc"],
+            "ti,hwmods": ["strings", "tptc1"],
+            "reg": ["words", "0x49900000", "0x00100000"],
+            "interrupts": ["words", "0x00000071"],
+            "interrupt-names": ["strings", "edma3_tcerrint"],
+            "phandle": ["words", "0x00000029"]
+        },
+        "tptc@49a00000": {
+            "compatible": ["strings", "ti,edma3-tptc"],
+            "ti,hwmods": ["strings", "tptc2"],
+            "reg": ["words", "0x49a00000", "0x00100000"],
+            "interrupts": ["words", "0x00000072"],
+            "interrupt-names": ["strings", "edma3_tcerrint"],
+            "phandle": ["words", "0x0000002a"]
+        },
+        "gpio@44e07000": {
+            "compatible": ["strings", "ti,omap4-gpio"],
+            "ti,hwmods": ["strings", "gpio1"],
+            "gpio-controller": null,
+            "#gpio-cells": ["words", "0x00000002"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000002"],
+            "reg": ["words", "0x44e07000", "0x00001000"],
+            "interrupts": ["words", "0x00000060"],
+            "gpio-line-names": ["strings", "MDIO_DATA", "MDIO_CLK", "SPI0_SCLK", "SPI0_D0", "SPI0_D1", "SPI0_CS0", "SPI0_CS1", "ECAP0_IN_PWM0_OUT", "LCD_DATA12", "LCD_DATA13", "LCD_DATA14", "LCD_DATA15", "UART1_CTSN", "UART1_RTSN", "UART1_RXD", "UART1_TXD", "GMII1_TXD3", "GMII1_TXD2", "USB0_DRVVBUS", "XDMA_EVENT_INTR0", "XDMA_EVENT_INTR1", "GMII1_TXD1", "GPMC_AD8", "GPMC_AD9", "NC", "NC", "GPMC_AD10", "GPMC_AD11", "GMII1_TXD0", "RMII1_REFCLK", "GPMC_WAIT0", "GPMC_WPN"],
+            "phandle": ["words", "0x00000031"]
+        },
+        "gpio@4804c000": {
+            "compatible": ["strings", "ti,omap4-gpio"],
+            "ti,hwmods": ["strings", "gpio2"],
+            "gpio-controller": null,
+            "#gpio-cells": ["words", "0x00000002"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000002"],
+            "reg": ["words", "0x4804c000", "0x00001000"],
+            "interrupts": ["words", "0x00000062"],
+            "gpio-line-names": ["strings", "GPMC_AD0", "GPMC_AD1", "GPMC_AD2", "GPMC_AD3", "GPMC_AD4", "GPMC_AD5", "GPMC_AD6", "GPMC_AD7", "UART0_CTSN", "UART0_RTSN", "UART0_RXD", "UART0_TXD", "GPMC_AD12", "GPMC_AD13", "GPMC_AD14", "GPMC_AD15", "GPMC_A0", "GPMC_A1", "GPMC_A2", "GPMC_A3", "GPMC_A4", "GPMC_A5", "GPMC_A6", "GPMC_A7", "GPMC_A8", "GPMC_A9", "GPMC_A10", "GPMC_A11", "GPMC_BE1N", "GPMC_CSN0", "GPMC_CSN1", "GPMC_CSN2"],
+            "phandle": ["words", "0x00000060"]
+        },
+        "gpio@481ac000": {
+            "compatible": ["strings", "ti,omap4-gpio"],
+            "ti,hwmods": ["strings", "gpio3"],
+            "gpio-controller": null,
+            "#gpio-cells": ["words", "0x00000002"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000002"],
+            "reg": ["words", "0x481ac000", "0x00001000"],
+            "interrupts": ["words", "0x00000020"],
+            "gpio-line-names": ["strings", "GPMC_CSN3", "GPMC_CLK", "GPMC_ADVN_ALE", "GPMC_OEN_REN", "GPMC_WEN", "GPMC_BE0N_CLE", "LCD_DATA0", "LCD_DATA1", "LCD_DATA2", "LCD_DATA3", "LCD_DATA4", "LCD_DATA5", "LCD_DATA6", "LCD_DATA7", "LCD_DATA8", "LCD_DATA9", "LCD_DATA10", "LCD_DATA11", "GMII1_RXD3", "GMII1_RXD2", "GMII1_RXD1", "GMII1_RXD0", "LCD_VSYNC", "LCD_HSYNC", "LCD_PCLK", "LCD_AC_BIAS_EN", "MMC0_DAT3", "MMC0_DAT2", "MMC0_DAT1", "MMC0_DAT0", "MMC0_CLK", "MMC0_CMD"],
+            "phandle": ["words", "0x0000009c"]
+        },
+        "gpio@481ae000": {
+            "compatible": ["strings", "ti,omap4-gpio"],
+            "ti,hwmods": ["strings", "gpio4"],
+            "gpio-controller": null,
+            "#gpio-cells": ["words", "0x00000002"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000002"],
+            "reg": ["words", "0x481ae000", "0x00001000"],
+            "interrupts": ["words", "0x0000003e"],
+            "gpio-line-names": ["strings", "GMII1_COL", "GMII1_CRS", "GMII1_RXER", "GMII1_TXEN", "GMII1_RXDV", "I2C0_SDA", "I2C0_SCL", "EMU0", "EMU1", "GMII1_TXCLK", "GMII1_RXCLK", "NC", "NC", "USB1_DRVVBUS", "MCASP0_ACLKX", "MCASP0_FSX", "MCASP0_AXR0", "MCASP0_AHCLKR", "MCASP0_ACLKR", "MCASP0_FSR", "MCASP0_AXR1", "MCASP0_AHCLKX", "NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC"],
+            "phandle": ["words", "0x0000009d"]
+        },
+        "serial@44e09000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart1"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x44e09000", "0x00002000"],
+            "interrupts": ["words", "0x00000048"],
+            "status": ["strings", "okay"],
+            "dmas": ["words", "0x00000027", "0x0000001a", "0x00000000", "0x00000027", "0x0000001b", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": ["words", "0x0000002b"],
+            "phandle": ["words", "0x0000009e"]
+        },
+        "serial@48022000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart2"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x48022000", "0x00002000"],
+            "interrupts": ["words", "0x00000049"],
+            "status": ["strings", "disabled"],
+            "dmas": ["words", "0x00000027", "0x0000001c", "0x00000000", "0x00000027", "0x0000001d", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "phandle": ["words", "0x0000009f"]
+        },
+        "serial@48024000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart3"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x48024000", "0x00002000"],
+            "interrupts": ["words", "0x0000004a"],
+            "status": ["strings", "disabled"],
+            "dmas": ["words", "0x00000027", "0x0000001e", "0x00000000", "0x00000027", "0x0000001f", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "phandle": ["words", "0x000000a0"]
+        },
+        "serial@481a6000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart4"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x481a6000", "0x00002000"],
+            "interrupts": ["words", "0x0000002c"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000a1"]
+        },
+        "serial@481a8000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart5"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x481a8000", "0x00002000"],
+            "interrupts": ["words", "0x0000002d"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000a2"]
+        },
+        "serial@481aa000": {
+            "compatible": ["strings", "ti,am3352-uart", "ti,omap3-uart"],
+            "ti,hwmods": ["strings", "uart6"],
+            "clock-frequency": ["words", "0x02dc6c00"],
+            "reg": ["words", "0x481aa000", "0x00002000"],
+            "interrupts": ["words", "0x0000002e"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000a3"]
+        },
+        "i2c@44e0b000": {
+            "compatible": ["strings", "ti,omap4-i2c"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000000"],
+            "ti,hwmods": ["strings", "i2c1"],
+            "reg": ["words", "0x44e0b000", "0x00001000"],
+            "interrupts": ["words", "0x00000046"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": ["words", "0x0000002c"],
+            "clock-frequency": ["words", "0x00061a80"],
+            "phandle": ["words", "0x000000a4"],
+            "tps@24": {
+                "reg": ["words", "0x00000024"],
+                "compatible": ["strings", "ti,tps65217"],
+                "interrupt-controller": null,
+                "#interrupt-cells": ["words", "0x00000001"],
+                "interrupts": ["words", "0x00000007"],
+                "interrupt-parent": ["words", "0x00000001"],
+                "ti,pmic-shutdown-controller": null,
+                "phandle": ["words", "0x0000003b"],
+                "charger": {
+                    "compatible": ["strings", "ti,tps65217-charger"],
+                    "interrupts": ["words", "0x00000000", "0x00000001"],
+                    "interrupt-names": ["strings", "USB", "AC"],
+                    "status": ["strings", "okay"]
+                },
+                "pwrbutton": {
+                    "compatible": ["strings", "ti,tps65217-pwrbutton"],
+                    "interrupts": ["words", "0x00000002"],
+                    "status": ["strings", "okay"]
+                },
+                "regulators": {
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000000"],
+                    "regulator@0": {
+                        "reg": ["words", "0x00000000"],
+                        "regulator-compatible": ["strings", "dcdc1"],
+                        "regulator-name": ["strings", "vdds_dpr"],
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x000000a5"]
+                    },
+                    "regulator@1": {
+                        "reg": ["words", "0x00000001"],
+                        "regulator-compatible": ["strings", "dcdc2"],
+                        "regulator-name": ["strings", "vdd_mpu"],
+                        "regulator-min-microvolt": ["words", "0x000e1d48"],
+                        "regulator-max-microvolt": ["words", "0x00149f4c"],
+                        "regulator-boot-on": null,
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x00000005"]
+                    },
+                    "regulator@2": {
+                        "reg": ["words", "0x00000002"],
+                        "regulator-compatible": ["strings", "dcdc3"],
+                        "regulator-name": ["strings", "vdd_core"],
+                        "regulator-min-microvolt": ["words", "0x000e1d48"],
+                        "regulator-max-microvolt": ["words", "0x00118c30"],
+                        "regulator-boot-on": null,
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x000000a6"]
+                    },
+                    "regulator@3": {
+                        "reg": ["words", "0x00000003"],
+                        "regulator-compatible": ["strings", "ldo1"],
+                        "regulator-name": ["strings", "vio,vrtc,vdds"],
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x000000a7"]
+                    },
+                    "regulator@4": {
+                        "reg": ["words", "0x00000004"],
+                        "regulator-compatible": ["strings", "ldo2"],
+                        "regulator-name": ["strings", "vdd_3v3aux"],
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x000000a8"]
+                    },
+                    "regulator@5": {
+                        "reg": ["words", "0x00000005"],
+                        "regulator-compatible": ["strings", "ldo3"],
+                        "regulator-name": ["strings", "vdd_1v8"],
+                        "regulator-always-on": null,
+                        "regulator-min-microvolt": ["words", "0x001b7740"],
+                        "regulator-max-microvolt": ["words", "0x001b7740"],
+                        "phandle": ["words", "0x000000a9"]
+                    },
+                    "regulator@6": {
+                        "reg": ["words", "0x00000006"],
+                        "regulator-compatible": ["strings", "ldo4"],
+                        "regulator-name": ["strings", "vdd_3v3a"],
+                        "regulator-always-on": null,
+                        "phandle": ["words", "0x000000aa"]
+                    }
+                }
+            },
+            "baseboard_eeprom@50": {
+                "compatible": ["strings", "atmel,24c256"],
+                "reg": ["words", "0x00000050"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "phandle": ["words", "0x000000ab"],
+                "baseboard_data@0": {
+                    "reg": ["words", "0x00000000", "0x00000100"],
+                    "phandle": ["words", "0x000000ac"]
+                }
+            },
+            "tda19988@70": {
+                "compatible": ["strings", "nxp,tda998x"],
+                "reg": ["words", "0x00000070"],
+                "pinctrl-names": ["strings", "default"],
+                "pinctrl-0": ["words", "0x0000002d"],
+                "#sound-dai-cells": ["words", "0x00000000"],
+                "audio-ports": ["words", "0x00000002", "0x00000003"],
+                "phandle": ["words", "0x00000065"],
+                "ports": {
+                    "port@0": {
+                        "endpoint@0": {
+                            "remote-endpoint": ["words", "0x0000002e"],
+                            "phandle": ["words", "0x00000048"]
+                        }
+                    }
+                }
+            }
+        },
+        "i2c@4802a000": {
+            "compatible": ["strings", "ti,omap4-i2c"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000000"],
+            "ti,hwmods": ["strings", "i2c2"],
+            "reg": ["words", "0x4802a000", "0x00001000"],
+            "interrupts": ["words", "0x00000047"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000ad"]
+        },
+        "i2c@4819c000": {
+            "compatible": ["strings", "ti,omap4-i2c"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000000"],
+            "ti,hwmods": ["strings", "i2c3"],
+            "reg": ["words", "0x4819c000", "0x00001000"],
+            "interrupts": ["words", "0x0000001e"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": null,
+            "clock-frequency": ["words", "0x000186a0"],
+            "phandle": ["words", "0x000000ae"],
+            "cape_eeprom0@54": {
+                "compatible": ["strings", "atmel,24c256"],
+                "reg": ["words", "0x00000054"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "phandle": ["words", "0x000000af"],
+                "cape_data@0": {
+                    "reg": ["words", "0x00000000", "0x00000100"],
+                    "phandle": ["words", "0x000000b0"]
+                }
+            },
+            "cape_eeprom1@55": {
+                "compatible": ["strings", "atmel,24c256"],
+                "reg": ["words", "0x00000055"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "phandle": ["words", "0x000000b1"],
+                "cape_data@0": {
+                    "reg": ["words", "0x00000000", "0x00000100"],
+                    "phandle": ["words", "0x000000b2"]
+                }
+            },
+            "cape_eeprom2@56": {
+                "compatible": ["strings", "atmel,24c256"],
+                "reg": ["words", "0x00000056"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "phandle": ["words", "0x000000b3"],
+                "cape_data@0": {
+                    "reg": ["words", "0x00000000", "0x00000100"],
+                    "phandle": ["words", "0x000000b4"]
+                }
+            },
+            "cape_eeprom3@57": {
+                "compatible": ["strings", "atmel,24c256"],
+                "reg": ["words", "0x00000057"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "phandle": ["words", "0x000000b5"],
+                "cape_data@0": {
+                    "reg": ["words", "0x00000000", "0x00000100"],
+                    "phandle": ["words", "0x000000b6"]
+                }
+            }
+        },
+        "mmc@48060000": {
+            "compatible": ["strings", "ti,omap4-hsmmc"],
+            "ti,hwmods": ["strings", "mmc1"],
+            "ti,dual-volt": null,
+            "ti,needs-special-reset": null,
+            "ti,needs-special-hs-handling": null,
+            "dmas": ["words", "0x0000002f", "0x00000018", "0x00000000", "0x00000000", "0x0000002f", "0x00000019", "0x00000000", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "interrupts": ["words", "0x00000040"],
+            "reg": ["words", "0x48060000", "0x00001000"],
+            "status": ["strings", "okay"],
+            "bus-width": ["words", "0x00000004"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": ["words", "0x00000030"],
+            "cd-gpios": ["words", "0x00000031", "0x00000006", "0x00000001"],
+            "vmmc-supply": ["words", "0x00000032"],
+            "phandle": ["words", "0x000000b7"]
+        },
+        "mmc@481d8000": {
+            "compatible": ["strings", "ti,omap4-hsmmc"],
+            "ti,hwmods": ["strings", "mmc2"],
+            "ti,needs-special-reset": null,
+            "dmas": ["words", "0x00000027", "0x00000002", "0x00000000", "0x00000027", "0x00000003", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "interrupts": ["words", "0x0000001c"],
+            "reg": ["words", "0x481d8000", "0x00001000"],
+            "status": ["strings", "okay"],
+            "vmmc-supply": ["words", "0x00000032"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": ["words", "0x00000033"],
+            "bus-width": ["words", "0x00000008"],
+            "phandle": ["words", "0x000000b8"]
+        },
+        "mmc@47810000": {
+            "compatible": ["strings", "ti,omap4-hsmmc"],
+            "ti,hwmods": ["strings", "mmc3"],
+            "ti,needs-special-reset": null,
+            "interrupts": ["words", "0x0000001d"],
+            "reg": ["words", "0x47810000", "0x00001000"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000b9"]
+        },
+        "spinlock@480ca000": {
+            "compatible": ["strings", "ti,omap4-hwspinlock"],
+            "reg": ["words", "0x480ca000", "0x00001000"],
+            "ti,hwmods": ["strings", "spinlock"],
+            "#hwlock-cells": ["words", "0x00000001"],
+            "phandle": ["words", "0x000000ba"]
+        },
+        "wdt@44e35000": {
+            "compatible": ["strings", "ti,omap3-wdt"],
+            "ti,hwmods": ["strings", "wd_timer2"],
+            "reg": ["words", "0x44e35000", "0x00001000"],
+            "interrupts": ["words", "0x0000005b"],
+            "phandle": ["words", "0x000000bb"]
+        },
+        "can@481cc000": {
+            "compatible": ["strings", "ti,am3352-d_can"],
+            "ti,hwmods": ["strings", "d_can0"],
+            "reg": ["words", "0x481cc000", "0x00002000"],
+            "clocks": ["words", "0x00000034"],
+            "clock-names": ["strings", "fck"],
+            "syscon-raminit": ["words", "0x00000006", "0x00000644", "0x00000000"],
+            "interrupts": ["words", "0x00000034"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000bc"]
+        },
+        "can@481d0000": {
+            "compatible": ["strings", "ti,am3352-d_can"],
+            "ti,hwmods": ["strings", "d_can1"],
+            "reg": ["words", "0x481d0000", "0x00002000"],
+            "clocks": ["words", "0x00000035"],
+            "clock-names": ["strings", "fck"],
+            "syscon-raminit": ["words", "0x00000006", "0x00000644", "0x00000001"],
+            "interrupts": ["words", "0x00000037"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000bd"]
+        },
+        "mailbox@480c8000": {
+            "compatible": ["strings", "ti,omap4-mailbox"],
+            "reg": ["words", "0x480c8000", "0x00000200"],
+            "interrupts": ["words", "0x0000004d"],
+            "ti,hwmods": ["strings", "mailbox"],
+            "#mbox-cells": ["words", "0x00000001"],
+            "ti,mbox-num-users": ["words", "0x00000004"],
+            "ti,mbox-num-fifos": ["words", "0x00000008"],
+            "phandle": ["words", "0x00000025"],
+            "wkup_m3": {
+                "ti,mbox-send-noirq": null,
+                "ti,mbox-tx": ["words", "0x00000000", "0x00000000", "0x00000000"],
+                "ti,mbox-rx": ["words", "0x00000000", "0x00000000", "0x00000003"],
+                "phandle": ["words", "0x00000026"]
+            }
+        },
+        "timer@44e31000": {
+            "compatible": ["strings", "ti,am335x-timer-1ms"],
+            "reg": ["words", "0x44e31000", "0x00000400"],
+            "interrupts": ["words", "0x00000043"],
+            "ti,hwmods": ["strings", "timer1"],
+            "ti,timer-alwon": null,
+            "clocks": ["words", "0x00000036"],
+            "clock-names": ["strings", "fck"],
+            "phandle": ["words", "0x000000be"]
+        },
+        "timer@48040000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x48040000", "0x00000400"],
+            "interrupts": ["words", "0x00000044"],
+            "ti,hwmods": ["strings", "timer2"],
+            "clocks": ["words", "0x00000037"],
+            "clock-names": ["strings", "fck"],
+            "phandle": ["words", "0x000000bf"]
+        },
+        "timer@48042000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x48042000", "0x00000400"],
+            "interrupts": ["words", "0x00000045"],
+            "ti,hwmods": ["strings", "timer3"],
+            "phandle": ["words", "0x000000c0"]
+        },
+        "timer@48044000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x48044000", "0x00000400"],
+            "interrupts": ["words", "0x0000005c"],
+            "ti,hwmods": ["strings", "timer4"],
+            "ti,timer-pwm": null,
+            "phandle": ["words", "0x000000c1"]
+        },
+        "timer@48046000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x48046000", "0x00000400"],
+            "interrupts": ["words", "0x0000005d"],
+            "ti,hwmods": ["strings", "timer5"],
+            "ti,timer-pwm": null,
+            "phandle": ["words", "0x000000c2"]
+        },
+        "timer@48048000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x48048000", "0x00000400"],
+            "interrupts": ["words", "0x0000005e"],
+            "ti,hwmods": ["strings", "timer6"],
+            "ti,timer-pwm": null,
+            "phandle": ["words", "0x000000c3"]
+        },
+        "timer@4804a000": {
+            "compatible": ["strings", "ti,am335x-timer"],
+            "reg": ["words", "0x4804a000", "0x00000400"],
+            "interrupts": ["words", "0x0000005f"],
+            "ti,hwmods": ["strings", "timer7"],
+            "ti,timer-pwm": null,
+            "phandle": ["words", "0x000000c4"]
+        },
+        "rtc@44e3e000": {
+            "compatible": ["strings", "ti,am3352-rtc", "ti,da830-rtc"],
+            "reg": ["words", "0x44e3e000", "0x00001000"],
+            "interrupts": ["words", "0x0000004b", "0x0000004c"],
+            "ti,hwmods": ["strings", "rtc"],
+            "clocks": ["words", "0x00000018", "0x00000015", "0x00000138", "0x00000000"],
+            "clock-names": ["strings", "ext-clk", "int-clk"],
+            "system-power-controller": null,
+            "phandle": ["words", "0x000000c5"]
+        },
+        "spi@48030000": {
+            "compatible": ["strings", "ti,omap4-mcspi"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000000"],
+            "reg": ["words", "0x48030000", "0x00000400"],
+            "interrupts": ["words", "0x00000041"],
+            "ti,spi-num-cs": ["words", "0x00000002"],
+            "ti,hwmods": ["strings", "spi0"],
+            "dmas": ["words", "0x00000027", "0x00000010", "0x00000000", "0x00000027", "0x00000011", "0x00000000", "0x00000027", "0x00000012", "0x00000000", "0x00000027", "0x00000013", "0x00000000"],
+            "dma-names": ["strings", "tx0", "rx0", "tx1", "rx1"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000c6"]
+        },
+        "spi@481a0000": {
+            "compatible": ["strings", "ti,omap4-mcspi"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000000"],
+            "reg": ["words", "0x481a0000", "0x00000400"],
+            "interrupts": ["words", "0x0000007d"],
+            "ti,spi-num-cs": ["words", "0x00000002"],
+            "ti,hwmods": ["strings", "spi1"],
+            "dmas": ["words", "0x00000027", "0x0000002a", "0x00000000", "0x00000027", "0x0000002b", "0x00000000", "0x00000027", "0x0000002c", "0x00000000", "0x00000027", "0x0000002d", "0x00000000"],
+            "dma-names": ["strings", "tx0", "rx0", "tx1", "rx1"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000c7"]
+        },
+        "usb@47400000": {
+            "compatible": ["strings", "ti,am33xx-usb"],
+            "reg": ["words", "0x47400000", "0x00001000"],
+            "ranges": null,
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "ti,hwmods": ["strings", "usb_otg_hs"],
+            "status": ["strings", "okay"],
+            "phandle": ["words", "0x000000c8"],
+            "control@44e10620": {
+                "compatible": ["strings", "ti,am335x-usb-ctrl-module"],
+                "reg": ["words", "0x44e10620", "0x00000010", "0x44e10648", "0x00000004"],
+                "reg-names": ["strings", "phy_ctrl", "wakeup"],
+                "status": ["strings", "okay"],
+                "phandle": ["words", "0x00000038"]
+            },
+            "usb-phy@47401300": {
+                "compatible": ["strings", "ti,am335x-usb-phy"],
+                "reg": ["words", "0x47401300", "0x00000100"],
+                "reg-names": ["strings", "phy"],
+                "status": ["strings", "okay"],
+                "ti,ctrl_mod": ["words", "0x00000038"],
+                "#phy-cells": ["words", "0x00000000"],
+                "phandle": ["words", "0x00000039"]
+            },
+            "usb@47401000": {
+                "compatible": ["strings", "ti,musb-am33xx"],
+                "status": ["strings", "okay"],
+                "reg": ["words", "0x47401400", "0x00000400", "0x47401000", "0x00000200"],
+                "reg-names": ["strings", "mc", "control"],
+                "interrupts": ["words", "0x00000012"],
+                "interrupt-names": ["strings", "mc", "vbus"],
+                "dr_mode": ["strings", "peripheral"],
+                "mentor,multipoint": ["words", "0x00000001"],
+                "mentor,num-eps": ["words", "0x00000010"],
+                "mentor,ram-bits": ["words", "0x0000000c"],
+                "mentor,power": ["words", "0x000001f4"],
+                "phys": ["words", "0x00000039"],
+                "dmas": ["words", "0x0000003a", "0x00000000", "0x00000000", "0x0000003a", "0x00000001", "0x00000000", "0x0000003a", "0x00000002", "0x00000000", "0x0000003a", "0x00000003", "0x00000000", "0x0000003a", "0x00000004", "0x00000000", "0x0000003a", "0x00000005", "0x00000000", "0x0000003a", "0x00000006", "0x00000000", "0x0000003a", "0x00000007", "0x00000000", "0x0000003a", "0x00000008", "0x00000000", "0x0000003a", "0x00000009", "0x00000000", "0x0000003a", "0x0000000a", "0x00000000", "0x0000003a", "0x0000000b", "0x00000000", "0x0000003a", "0x0000000c", "0x00000000", "0x0000003a", "0x0000000d", "0x00000000", "0x0000003a", "0x0000000e", "0x00000000", "0x0000003a", "0x00000000", "0x00000001", "0x0000003a", "0x00000001", "0x00000001", "0x0000003a", "0x00000002", "0x00000001", "0x0000003a", "0x00000003", "0x00000001", "0x0000003a", "0x00000004", "0x00000001", "0x0000003a", "0x00000005", "0x00000001", "0x0000003a", "0x00000006", "0x00000001", "0x0000003a", "0x00000007", "0x00000001", "0x0000003a", "0x00000008", "0x00000001", "0x0000003a", "0x00000009", "0x00000001", "0x0000003a", "0x0000000a", "0x00000001", "0x0000003a", "0x0000000b", "0x00000001", "0x0000003a", "0x0000000c", "0x00000001", "0x0000003a", "0x0000000d", "0x00000001", "0x0000003a", "0x0000000e", "0x00000001"],
+                "dma-names": ["strings", "rx1", "rx2", "rx3", "rx4", "rx5", "rx6", "rx7", "rx8", "rx9", "rx10", "rx11", "rx12", "rx13", "rx14", "rx15", "tx1", "tx2", "tx3", "tx4", "tx5", "tx6", "tx7", "tx8", "tx9", "tx10", "tx11", "tx12", "tx13", "tx14", "tx15"],
+                "interrupts-extended": ["words", "0x00000001", "0x00000012", "0x0000003b", "0x00000000"],
+                "phandle": ["words", "0x000000c9"]
+            },
+            "usb-phy@47401b00": {
+                "compatible": ["strings", "ti,am335x-usb-phy"],
+                "reg": ["words", "0x47401b00", "0x00000100"],
+                "reg-names": ["strings", "phy"],
+                "status": ["strings", "okay"],
+                "ti,ctrl_mod": ["words", "0x00000038"],
+                "#phy-cells": ["words", "0x00000000"],
+                "phandle": ["words", "0x0000003c"]
+            },
+            "usb@47401800": {
+                "compatible": ["strings", "ti,musb-am33xx"],
+                "status": ["strings", "okay"],
+                "reg": ["words", "0x47401c00", "0x00000400", "0x47401800", "0x00000200"],
+                "reg-names": ["strings", "mc", "control"],
+                "interrupts": ["words", "0x00000013"],
+                "interrupt-names": ["strings", "mc"],
+                "dr_mode": ["strings", "host"],
+                "mentor,multipoint": ["words", "0x00000001"],
+                "mentor,num-eps": ["words", "0x00000010"],
+                "mentor,ram-bits": ["words", "0x0000000c"],
+                "mentor,power": ["words", "0x000001f4"],
+                "phys": ["words", "0x0000003c"],
+                "dmas": ["words", "0x0000003a", "0x0000000f", "0x00000000", "0x0000003a", "0x00000010", "0x00000000", "0x0000003a", "0x00000011", "0x00000000", "0x0000003a", "0x00000012", "0x00000000", "0x0000003a", "0x00000013", "0x00000000", "0x0000003a", "0x00000014", "0x00000000", "0x0000003a", "0x00000015", "0x00000000", "0x0000003a", "0x00000016", "0x00000000", "0x0000003a", "0x00000017", "0x00000000", "0x0000003a", "0x00000018", "0x00000000", "0x0000003a", "0x00000019", "0x00000000", "0x0000003a", "0x0000001a", "0x00000000", "0x0000003a", "0x0000001b", "0x00000000", "0x0000003a", "0x0000001c", "0x00000000", "0x0000003a", "0x0000001d", "0x00000000", "0x0000003a", "0x0000000f", "0x00000001", "0x0000003a", "0x00000010", "0x00000001", "0x0000003a", "0x00000011", "0x00000001", "0x0000003a", "0x00000012", "0x00000001", "0x0000003a", "0x00000013", "0x00000001", "0x0000003a", "0x00000014", "0x00000001", "0x0000003a", "0x00000015", "0x00000001", "0x0000003a", "0x00000016", "0x00000001", "0x0000003a", "0x00000017", "0x00000001", "0x0000003a", "0x00000018", "0x00000001", "0x0000003a", "0x00000019", "0x00000001", "0x0000003a", "0x0000001a", "0x00000001", "0x0000003a", "0x0000001b", "0x00000001", "0x0000003a", "0x0000001c", "0x00000001", "0x0000003a", "0x0000001d", "0x00000001"],
+                "dma-names": ["strings", "rx1", "rx2", "rx3", "rx4", "rx5", "rx6", "rx7", "rx8", "rx9", "rx10", "rx11", "rx12", "rx13", "rx14", "rx15", "tx1", "tx2", "tx3", "tx4", "tx5", "tx6", "tx7", "tx8", "tx9", "tx10", "tx11", "tx12", "tx13", "tx14", "tx15"],
+                "phandle": ["words", "0x000000ca"]
+            },
+            "dma-controller@47402000": {
+                "compatible": ["strings", "ti,am3359-cppi41"],
+                "reg": ["words", "0x47400000", "0x00001000", "0x47402000", "0x00001000", "0x47403000", "0x00001000", "0x47404000", "0x00004000"],
+                "reg-names": ["strings", "glue", "controller", "scheduler", "queuemgr"],
+                "interrupts": ["words", "0x00000011"],
+                "interrupt-names": ["strings", "glue"],
+                "#dma-cells": ["words", "0x00000002"],
+                "#dma-channels": ["words", "0x0000001e"],
+                "#dma-requests": ["words", "0x00000100"],
+                "status": ["strings", "okay"],
+                "phandle": ["words", "0x0000003a"]
+            }
+        },
+        "epwmss@48300000": {
+            "compatible": ["strings", "ti,am33xx-pwmss"],
+            "reg": ["words", "0x48300000", "0x00000010"],
+            "ti,hwmods": ["strings", "epwmss0"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "status": ["strings", "disabled"],
+            "ranges": ["words", "0x48300100", "0x48300100", "0x00000080", "0x48300180", "0x48300180", "0x00000080", "0x48300200", "0x48300200", "0x00000080"],
+            "phandle": ["words", "0x000000cb"],
+            "ecap@48300100": {
+                "compatible": ["strings", "ti,am3352-ecap", "ti,am33xx-ecap"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48300100", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupts": ["words", "0x0000001f"],
+                "interrupt-names": ["strings", "ecap0"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000cc"]
+            },
+            "eqep@0x48300180": {
+                "compatible": ["strings", "ti,am33xx-eqep"],
+                "reg": ["words", "0x48300180", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupt-parent": ["words", "0x00000001"],
+                "interrupts": ["words", "0x0000004f"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000cd"]
+            },
+            "pwm@48300200": {
+                "compatible": ["strings", "ti,am3352-ehrpwm", "ti,am33xx-ehrpwm"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48300200", "0x00000080"],
+                "clocks": ["words", "0x0000003d", "0x00000023"],
+                "clock-names": ["strings", "tbclk", "fck"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000ce"]
+            }
+        },
+        "epwmss@48302000": {
+            "compatible": ["strings", "ti,am33xx-pwmss"],
+            "reg": ["words", "0x48302000", "0x00000010"],
+            "ti,hwmods": ["strings", "epwmss1"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "status": ["strings", "disabled"],
+            "ranges": ["words", "0x48302100", "0x48302100", "0x00000080", "0x48302180", "0x48302180", "0x00000080", "0x48302200", "0x48302200", "0x00000080"],
+            "phandle": ["words", "0x000000cf"],
+            "ecap@48302100": {
+                "compatible": ["strings", "ti,am3352-ecap", "ti,am33xx-ecap"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48302100", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupts": ["words", "0x0000002f"],
+                "interrupt-names": ["strings", "ecap1"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d0"]
+            },
+            "eqep@0x48302180": {
+                "compatible": ["strings", "ti,am33xx-eqep"],
+                "reg": ["words", "0x48302180", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupt-parent": ["words", "0x00000001"],
+                "interrupts": ["words", "0x00000058"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d1"]
+            },
+            "pwm@48302200": {
+                "compatible": ["strings", "ti,am3352-ehrpwm", "ti,am33xx-ehrpwm"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48302200", "0x00000080"],
+                "clocks": ["words", "0x0000003e", "0x00000023"],
+                "clock-names": ["strings", "tbclk", "fck"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d2"]
+            }
+        },
+        "epwmss@48304000": {
+            "compatible": ["strings", "ti,am33xx-pwmss"],
+            "reg": ["words", "0x48304000", "0x00000010"],
+            "ti,hwmods": ["strings", "epwmss2"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "status": ["strings", "disabled"],
+            "ranges": ["words", "0x48304100", "0x48304100", "0x00000080", "0x48304180", "0x48304180", "0x00000080", "0x48304200", "0x48304200", "0x00000080"],
+            "phandle": ["words", "0x000000d3"],
+            "ecap@48304100": {
+                "compatible": ["strings", "ti,am3352-ecap", "ti,am33xx-ecap"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48304100", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupts": ["words", "0x0000003d"],
+                "interrupt-names": ["strings", "ecap2"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d4"]
+            },
+            "eqep@0x48304180": {
+                "compatible": ["strings", "ti,am33xx-eqep"],
+                "reg": ["words", "0x48304180", "0x00000080"],
+                "clocks": ["words", "0x00000023"],
+                "clock-names": ["strings", "fck"],
+                "interrupt-parent": ["words", "0x00000001"],
+                "interrupts": ["words", "0x00000059"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d5"]
+            },
+            "pwm@48304200": {
+                "compatible": ["strings", "ti,am3352-ehrpwm", "ti,am33xx-ehrpwm"],
+                "#pwm-cells": ["words", "0x00000003"],
+                "reg": ["words", "0x48304200", "0x00000080"],
+                "clocks": ["words", "0x0000003f", "0x00000023"],
+                "clock-names": ["strings", "tbclk", "fck"],
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000d6"]
+            }
+        },
+        "ethernet@4a100000": {
+            "compatible": ["strings", "ti,am335x-cpsw", "ti,cpsw"],
+            "ti,hwmods": ["strings", "cpgmac0"],
+            "clocks": ["words", "0x00000040", "0x00000041"],
+            "clock-names": ["strings", "fck", "cpts"],
+            "cpdma_channels": ["words", "0x00000008"],
+            "ale_entries": ["words", "0x00000400"],
+            "bd_ram_size": ["words", "0x00002000"],
+            "mac_control": ["words", "0x00000020"],
+            "slaves": ["words", "0x00000001"],
+            "active_slave": ["words", "0x00000000"],
+            "cpts_clock_mult": ["words", "0x80000000"],
+            "cpts_clock_shift": ["words", "0x0000001d"],
+            "reg": ["words", "0x4a100000", "0x00000800", "0x4a101200", "0x00000100"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "interrupts": ["words", "0x00000028", "0x00000029", "0x0000002a", "0x0000002b"],
+            "ranges": null,
+            "syscon": ["words", "0x00000006"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default", "sleep"],
+            "pinctrl-0": ["words", "0x00000042"],
+            "pinctrl-1": ["words", "0x00000043"],
+            "phandle": ["words", "0x000000d7"],
+            "mdio@4a101000": {
+                "compatible": ["strings", "ti,cpsw-mdio", "ti,davinci_mdio"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000000"],
+                "ti,hwmods": ["strings", "davinci_mdio"],
+                "bus_freq": ["words", "0x000f4240"],
+                "reg": ["words", "0x4a101000", "0x00000100"],
+                "status": ["strings", "okay"],
+                "pinctrl-names": ["strings", "default", "sleep"],
+                "pinctrl-0": ["words", "0x00000044"],
+                "pinctrl-1": ["words", "0x00000045"],
+                "phandle": ["words", "0x00000046"]
+            },
+            "slave@4a100200": {
+                "mac-address": ["bytes", "00", "00", "00", "00", "00", "00"],
+                "phy_id": ["words", "0x00000046", "0x00000000"],
+                "phy-mode": ["strings", "mii"],
+                "phandle": ["words", "0x000000d8"]
+            },
+            "slave@4a100300": {
+                "mac-address": ["bytes", "00", "00", "00", "00", "00", "00"],
+                "phandle": ["words", "0x000000d9"]
+            },
+            "cpsw-phy-sel@44e10650": {
+                "compatible": ["strings", "ti,am3352-cpsw-phy-sel"],
+                "reg": ["words", "0x44e10650", "0x00000004"],
+                "reg-names": ["strings", "gmii-sel"],
+                "phandle": ["words", "0x000000da"]
+            }
+        },
+        "ocmcram@40300000": {
+            "compatible": ["strings", "mmio-sram"],
+            "reg": ["words", "0x40300000", "0x00010000"],
+            "ranges": ["words", "0x00000000", "0x40300000", "0x00010000"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "phandle": ["words", "0x000000db"],
+            "pm-sram-code@0": {
+                "compatible": ["strings", "ti,sram"],
+                "reg": ["words", "0x00000000", "0x00001000"],
+                "protect-exec": null,
+                "phandle": ["words", "0x00000007"]
+            },
+            "pm-sram-data@1000": {
+                "compatible": ["strings", "ti,sram"],
+                "reg": ["words", "0x00001000", "0x00001000"],
+                "pool": null,
+                "phandle": ["words", "0x00000008"]
+            }
+        },
+        "pruss-soc-bus@4a326004": {
+            "compatible": ["strings", "ti,am3356-pruss-soc-bus"],
+            "reg": ["words", "0x4a326004", "0x00000004"],
+            "ti,hwmods": ["strings", "pruss"],
+            "#address-cells": ["words", "0x00000001"],
+            "#size-cells": ["words", "0x00000001"],
+            "ranges": null,
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000dc"],
+            "pruss@4a300000": {
+                "compatible": ["strings", "ti,am3356-pruss"],
+                "reg": ["words", "0x4a300000", "0x00080000"],
+                "interrupts": ["words", "0x00000014", "0x00000015", "0x00000016", "0x00000017", "0x00000018", "0x00000019", "0x0000001a", "0x0000001b"],
+                "interrupt-names": ["strings", "host2", "host3", "host4", "host5", "host6", "host7", "host8", "host9"],
+                "#address-cells": ["words", "0x00000001"],
+                "#size-cells": ["words", "0x00000001"],
+                "ranges": null,
+                "status": ["strings", "disabled"],
+                "phandle": ["words", "0x000000dd"],
+                "memories@4a300000": {
+                    "reg": ["words", "0x4a300000", "0x00002000", "0x4a302000", "0x00002000", "0x4a310000", "0x00003000"],
+                    "reg-names": ["strings", "dram0", "dram1", "shrdram2"],
+                    "phandle": ["words", "0x000000de"]
+                },
+                "cfg@4a326000": {
+                    "compatible": ["strings", "syscon"],
+                    "reg": ["words", "0x4a326000", "0x00002000"],
+                    "phandle": ["words", "0x000000df"]
+                },
+                "iep@4a32e000": {
+                    "compatible": ["strings", "syscon"],
+                    "reg": ["words", "0x4a32e000", "0x0000031c"],
+                    "phandle": ["words", "0x000000e0"]
+                },
+                "mii-rt@4a332000": {
+                    "compatible": ["strings", "syscon"],
+                    "reg": ["words", "0x4a332000", "0x00000058"],
+                    "phandle": ["words", "0x000000e1"]
+                },
+                "interrupt-controller@4a320000": {
+                    "compatible": ["strings", "ti,am3356-pruss-intc"],
+                    "reg": ["words", "0x4a320000", "0x00002000"],
+                    "interrupt-controller": null,
+                    "#interrupt-cells": ["words", "0x00000001"],
+                    "phandle": ["words", "0x00000047"]
+                },
+                "pru@4a334000": {
+                    "compatible": ["strings", "ti,am3356-pru"],
+                    "reg": ["words", "0x4a334000", "0x00002000", "0x4a322000", "0x00000400", "0x4a322400", "0x00000100"],
+                    "reg-names": ["strings", "iram", "control", "debug"],
+                    "firmware-name": ["strings", "am335x-pru0-fw"],
+                    "interrupt-parent": ["words", "0x00000047"],
+                    "interrupts": ["words", "0x00000010", "0x00000011"],
+                    "interrupt-names": ["strings", "vring", "kick"],
+                    "phandle": ["words", "0x000000e2"]
+                },
+                "pru@4a338000": {
+                    "compatible": ["strings", "ti,am3356-pru"],
+                    "reg": ["words", "0x4a338000", "0x00002000", "0x4a324000", "0x00000400", "0x4a324400", "0x00000100"],
+                    "reg-names": ["strings", "iram", "control", "debug"],
+                    "firmware-name": ["strings", "am335x-pru1-fw"],
+                    "interrupt-parent": ["words", "0x00000047"],
+                    "interrupts": ["words", "0x00000012", "0x00000013"],
+                    "interrupt-names": ["strings", "vring", "kick"],
+                    "phandle": ["words", "0x000000e3"]
+                },
+                "mdio@4a332400": {
+                    "compatible": ["strings", "ti,davinci_mdio"],
+                    "reg": ["words", "0x4a332400", "0x00000090"],
+                    "clocks": ["words", "0x00000012"],
+                    "clock-names": ["strings", "fck"],
+                    "bus_freq": ["words", "0x000f4240"],
+                    "#address-cells": ["words", "0x00000001"],
+                    "#size-cells": ["words", "0x00000000"],
+                    "status": ["strings", "disabled"],
+                    "phandle": ["words", "0x000000e4"]
+                }
+            }
+        },
+        "elm@48080000": {
+            "compatible": ["strings", "ti,am3352-elm"],
+            "reg": ["words", "0x48080000", "0x00002000"],
+            "interrupts": ["words", "0x00000004"],
+            "ti,hwmods": ["strings", "elm"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000e5"]
+        },
+        "lcdc@4830e000": {
+            "compatible": ["strings", "ti,am33xx-tilcdc"],
+            "reg": ["words", "0x4830e000", "0x00001000"],
+            "interrupts": ["words", "0x00000024"],
+            "ti,hwmods": ["strings", "lcdc"],
+            "status": ["strings", "okay"],
+            "blue-and-red-wiring": ["strings", "straight"],
+            "phandle": ["words", "0x000000e6"],
+            "port": {
+                "endpoint@0": {
+                    "remote-endpoint": ["words", "0x00000048"],
+                    "phandle": ["words", "0x0000002e"]
+                }
+            }
+        },
+        "tscadc@44e0d000": {
+            "compatible": ["strings", "ti,am3359-tscadc"],
+            "reg": ["words", "0x44e0d000", "0x00001000"],
+            "interrupts": ["words", "0x00000010"],
+            "ti,hwmods": ["strings", "adc_tsc"],
+            "status": ["strings", "disabled"],
+            "dmas": ["words", "0x00000027", "0x00000035", "0x00000000", "0x00000027", "0x00000039", "0x00000000"],
+            "dma-names": ["strings", "fifo0", "fifo1"],
+            "phandle": ["words", "0x000000e7"],
+            "tsc": {
+                "compatible": ["strings", "ti,am3359-tsc"]
+            },
+            "adc": {
+                "#io-channel-cells": ["words", "0x00000001"],
+                "compatible": ["strings", "ti,am3359-adc"],
+                "phandle": ["words", "0x000000e8"]
+            }
+        },
+        "emif@4c000000": {
+            "compatible": ["strings", "ti,emif-am3352"],
+            "reg": ["words", "0x4c000000", "0x01000000"],
+            "ti,hwmods": ["strings", "emif"],
+            "interrupts": ["words", "0x00000065"],
+            "sram": ["words", "0x00000007", "0x00000008"],
+            "ti,no-idle": null,
+            "phandle": ["words", "0x000000e9"]
+        },
+        "gpmc@50000000": {
+            "compatible": ["strings", "ti,am3352-gpmc"],
+            "ti,hwmods": ["strings", "gpmc"],
+            "ti,no-idle-on-init": null,
+            "reg": ["words", "0x50000000", "0x00002000"],
+            "interrupts": ["words", "0x00000064"],
+            "dmas": ["words", "0x00000027", "0x00000034", "0x00000000"],
+            "dma-names": ["strings", "rxtx"],
+            "gpmc,num-cs": ["words", "0x00000007"],
+            "gpmc,num-waitpins": ["words", "0x00000002"],
+            "#address-cells": ["words", "0x00000002"],
+            "#size-cells": ["words", "0x00000001"],
+            "interrupt-controller": null,
+            "#interrupt-cells": ["words", "0x00000002"],
+            "gpio-controller": null,
+            "#gpio-cells": ["words", "0x00000002"],
+            "status": ["strings", "disabled"],
+            "phandle": ["words", "0x000000ea"]
+        },
+        "sham@53100000": {
+            "compatible": ["strings", "ti,omap4-sham"],
+            "ti,hwmods": ["strings", "sham"],
+            "reg": ["words", "0x53100000", "0x00000200"],
+            "interrupts": ["words", "0x0000006d"],
+            "dmas": ["words", "0x00000027", "0x00000024", "0x00000000"],
+            "dma-names": ["strings", "rx"],
+            "status": ["strings", "okay"],
+            "phandle": ["words", "0x000000eb"]
+        },
+        "aes@53500000": {
+            "compatible": ["strings", "ti,omap4-aes"],
+            "ti,hwmods": ["strings", "aes"],
+            "reg": ["words", "0x53500000", "0x000000a0"],
+            "interrupts": ["words", "0x00000067"],
+            "dmas": ["words", "0x00000027", "0x00000006", "0x00000000", "0x00000027", "0x00000005", "0x00000000"],
+            "dma-names": ["strings", "tx", "rx"],
+            "status": ["strings", "okay"],
+            "phandle": ["words", "0x000000ec"]
+        },
+        "mcasp@48038000": {
+            "compatible": ["strings", "ti,am33xx-mcasp-audio"],
+            "ti,hwmods": ["strings", "mcasp0"],
+            "reg": ["words", "0x48038000", "0x00002000", "0x46000000", "0x00400000"],
+            "reg-names": ["strings", "mpu", "dat"],
+            "interrupts": ["words", "0x00000050", "0x00000051"],
+            "interrupt-names": ["strings", "tx", "rx"],
+            "status": ["strings", "okay"],
+            "dmas": ["words", "0x00000027", "0x00000008", "0x00000002", "0x00000027", "0x00000009", "0x00000002"],
+            "dma-names": ["strings", "tx", "rx"],
+            "#sound-dai-cells": ["words", "0x00000000"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": ["words", "0x00000049"],
+            "op-mode": ["words", "0x00000000"],
+            "tdm-slots": ["words", "0x00000002"],
+            "serial-dir": ["words", "0x00000000", "0x00000000", "0x00000001", "0x00000000"],
+            "tx-num-evt": ["words", "0x00000020"],
+            "rx-num-evt": ["words", "0x00000020"],
+            "phandle": ["words", "0x00000063"]
+        },
+        "mcasp@4803c000": {
+            "compatible": ["strings", "ti,am33xx-mcasp-audio"],
+            "ti,hwmods": ["strings", "mcasp1"],
+            "reg": ["words", "0x4803c000", "0x00002000", "0x46400000", "0x00400000"],
+            "reg-names": ["strings", "mpu", "dat"],
+            "interrupts": ["words", "0x00000052", "0x00000053"],
+            "interrupt-names": ["strings", "tx", "rx"],
+            "status": ["strings", "disabled"],
+            "dmas": ["words", "0x00000027", "0x0000000a", "0x00000002", "0x00000027", "0x0000000b", "0x00000002"],
+            "dma-names": ["strings", "tx", "rx"],
+            "phandle": ["words", "0x000000ed"]
+        },
+        "rng@48310000": {
+            "compatible": ["strings", "ti,omap4-rng"],
+            "ti,hwmods": ["strings", "rng"],
+            "reg": ["words", "0x48310000", "0x00002000"],
+            "interrupts": ["words", "0x0000006f"],
+            "phandle": ["words", "0x000000ee"]
+        },
+        "sgx@56000000": {
+            "compatible": ["strings", "ti,am3352-sgx530", "img,sgx530"],
+            "ti,hwmods": ["strings", "gfx"],
+            "reg": ["words", "0x56000000", "0x00010000"],
+            "interrupts": ["words", "0x00000025"],
+            "clocks": ["words", "0x0000004a"],
+            "clock-names": ["strings", "fclk"],
+            "status": ["strings", "okay"],
+            "phandle": ["words", "0x000000ef"]
+        },
+        "P9_19_pinmux": {
+            "compatible": ["strings", "bone-pinmux-helper"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default", "gpio", "gpio_pu", "gpio_pd", "gpio_input", "spi_cs", "can", "i2c", "pru_uart", "timer"],
+            "pinctrl-0": ["words", "0x0000004b"],
+            "pinctrl-1": ["words", "0x0000004c"],
+            "pinctrl-2": ["words", "0x0000004d"],
+            "pinctrl-3": ["words", "0x0000004e"],
+            "pinctrl-4": ["words", "0x0000004f"],
+            "pinctrl-5": ["words", "0x00000050"],
+            "pinctrl-6": ["words", "0x00000051"],
+            "pinctrl-7": ["words", "0x00000052"],
+            "pinctrl-8": ["words", "0x00000053"],
+            "pinctrl-9": ["words", "0x00000054"]
+        },
+        "P9_20_pinmux": {
+            "compatible": ["strings", "bone-pinmux-helper"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default", "gpio", "gpio_pu", "gpio_pd", "gpio_input", "spi_cs", "can", "i2c", "pru_uart", "timer"],
+            "pinctrl-0": ["words", "0x00000055"],
+            "pinctrl-1": ["words", "0x00000056"],
+            "pinctrl-2": ["words", "0x00000057"],
+            "pinctrl-3": ["words", "0x00000058"],
+            "pinctrl-4": ["words", "0x00000059"],
+            "pinctrl-5": ["words", "0x0000005a"],
+            "pinctrl-6": ["words", "0x0000005b"],
+            "pinctrl-7": ["words", "0x0000005c"],
+            "pinctrl-8": ["words", "0x0000005d"],
+            "pinctrl-9": ["words", "0x0000005e"]
+        },
+        "cape-universal": {
+            "compatible": ["strings", "gpio-of-helper"],
+            "status": ["strings", "okay"],
+            "pinctrl-names": ["strings", "default"],
+            "pinctrl-0": null,
+            "P9_19": {
+                "gpio-name": ["strings", "P9_19"],
+                "gpio": ["words", "0x00000031", "0x0000000d", "0x00000000"],
+                "input": null,
+                "dir-changeable": null
+            },
+            "P9_20": {
+                "gpio-name": ["strings", "P9_20"],
+                "gpio": ["words", "0x00000031", "0x0000000c", "0x00000000"],
+                "input": null,
+                "dir-changeable": null
+            }
+        }
+    },
+    "memory@80000000": {
+        "device_type": ["strings", "memory"],
+        "reg": ["words", "0x80000000", "0x10000000"]
+    },
+    "leds": {
+        "pinctrl-names": ["strings", "default"],
+        "pinctrl-0": ["words", "0x0000005f"],
+        "compatible": ["strings", "gpio-leds"],
+        "led2": {
+            "label": ["strings", "beaglebone:green:usr0"],
+            "gpios": ["words", "0x00000060", "0x00000015", "0x00000000"],
+            "linux,default-trigger": ["strings", "heartbeat"],
+            "default-state": ["strings", "off"]
+        },
+        "led3": {
+            "label": ["strings", "beaglebone:green:usr1"],
+            "gpios": ["words", "0x00000060", "0x00000016", "0x00000000"],
+            "linux,default-trigger": ["strings", "mmc0"],
+            "default-state": ["strings", "off"]
+        },
+        "led4": {
+            "label": ["strings", "beaglebone:green:usr2"],
+            "gpios": ["words", "0x00000060", "0x00000017", "0x00000000"],
+            "linux,default-trigger": ["strings", "cpu0"],
+            "default-state": ["strings", "off"]
+        },
+        "led5": {
+            "label": ["strings", "beaglebone:green:usr3"],
+            "gpios": ["words", "0x00000060", "0x00000018", "0x00000000"],
+            "linux,default-trigger": ["strings", "mmc1"],
+            "default-state": ["strings", "off"]
+        }
+    },
+    "fixedregulator0": {
+        "compatible": ["strings", "regulator-fixed"],
+        "regulator-name": ["strings", "vmmcsd_fixed"],
+        "regulator-min-microvolt": ["words", "0x00325aa0"],
+        "regulator-max-microvolt": ["words", "0x00325aa0"],
+        "phandle": ["words", "0x00000032"]
+    },
+    "clk_mcasp0_fixed": {
+        "#clock-cells": ["words", "0x00000000"],
+        "compatible": ["strings", "fixed-clock"],
+        "clock-frequency": ["words", "0x01770000"],
+        "phandle": ["words", "0x00000061"]
+    },
+    "clk_mcasp0": {
+        "#clock-cells": ["words", "0x00000000"],
+        "compatible": ["strings", "gpio-gate-clock"],
+        "clocks": ["words", "0x00000061"],
+        "enable-gpios": ["words", "0x00000060", "0x0000001b", "0x00000000"],
+        "phandle": ["words", "0x00000064"]
+    },
+    "sound": {
+        "compatible": ["strings", "simple-audio-card"],
+        "simple-audio-card,name": ["strings", "TI BeagleBone Black"],
+        "simple-audio-card,format": ["strings", "i2s"],
+        "simple-audio-card,bitclock-master": ["words", "0x00000062"],
+        "simple-audio-card,frame-master": ["words", "0x00000062"],
+        "simple-audio-card,cpu": {
+            "sound-dai": ["words", "0x00000063"],
+            "clocks": ["words", "0x00000064"],
+            "phandle": ["words", "0x00000062"]
+        },
+        "simple-audio-card,codec": {
+            "sound-dai": ["words", "0x00000065"]
+        }
+    },
+    "__symbols__": {
+        "aliases": ["strings", "/aliases"],
+        "mpu_gate": ["strings", "/cpus/idle-states/mpu_gate"],
+        "cpu0_opp_table": ["strings", "/opp-table"],
+        "ocp": ["strings", "/ocp"],
+        "l4_wkup": ["strings", "/ocp/l4_wkup@44c00000"],
+        "wkup_m3": ["strings", "/ocp/l4_wkup@44c00000/wkup_m3@100000"],
+        "prcm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000"],
+        "prcm_clocks": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks"],
+        "clk_32768_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clk_32768_ck"],
+        "clk_rc32k_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clk_rc32k_ck"],
+        "virt_19200000_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/virt_19200000_ck"],
+        "virt_24000000_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/virt_24000000_ck"],
+        "virt_25000000_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/virt_25000000_ck"],
+        "virt_26000000_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/virt_26000000_ck"],
+        "tclkin_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/tclkin_ck"],
+        "dpll_core_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_ck@490"],
+        "dpll_core_x2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_x2_ck"],
+        "dpll_core_m4_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_ck@480"],
+        "dpll_core_m5_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m5_ck@484"],
+        "dpll_core_m6_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m6_ck@4d8"],
+        "dpll_mpu_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_ck@488"],
+        "dpll_mpu_m2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_mpu_m2_ck@4a8"],
+        "dpll_ddr_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_ck@494"],
+        "dpll_ddr_m2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_ck@4a0"],
+        "dpll_ddr_m2_div2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_ddr_m2_div2_ck"],
+        "dpll_disp_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_ck@498"],
+        "dpll_disp_m2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_disp_m2_ck@4a4"],
+        "dpll_per_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_ck@48c"],
+        "dpll_per_m2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_ck@4ac"],
+        "dpll_per_m2_div4_wkupdm_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_div4_wkupdm_ck"],
+        "dpll_per_m2_div4_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_per_m2_div4_ck"],
+        "clk_24mhz": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clk_24mhz"],
+        "clkdiv32k_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clkdiv32k_ck"],
+        "l3_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l3_gclk"],
+        "pruss_ocp_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/pruss_ocp_gclk@530"],
+        "mmu_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/mmu_fck@914"],
+        "timer1_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer1_fck@528"],
+        "timer2_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer2_fck@508"],
+        "timer3_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer3_fck@50c"],
+        "timer4_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer4_fck@510"],
+        "timer5_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer5_fck@518"],
+        "timer6_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer6_fck@51c"],
+        "timer7_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/timer7_fck@504"],
+        "usbotg_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/usbotg_fck@47c"],
+        "dpll_core_m4_div2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/dpll_core_m4_div2_ck"],
+        "ieee5000_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/ieee5000_fck@e4"],
+        "wdt1_fck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/wdt1_fck@538"],
+        "l4_rtc_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l4_rtc_gclk"],
+        "l4hs_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l4hs_gclk"],
+        "l3s_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l3s_gclk"],
+        "l4fw_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l4fw_gclk"],
+        "l4ls_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/l4ls_gclk"],
+        "sysclk_div_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclk_div_ck"],
+        "cpsw_125mhz_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_125mhz_gclk"],
+        "cpsw_cpts_rft_clk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/cpsw_cpts_rft_clk@520"],
+        "gpio0_dbclk_mux_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/gpio0_dbclk_mux_ck@53c"],
+        "lcd_gclk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/lcd_gclk@534"],
+        "mmc_clk": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/mmc_clk"],
+        "gfx_fclk_clksel_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fclk_clksel_ck@52c"],
+        "gfx_fck_div_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/gfx_fck_div_ck@52c"],
+        "sysclkout_pre_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/sysclkout_pre_ck@700"],
+        "clkout2_div_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_div_ck@700"],
+        "clkout2_ck": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clocks/clkout2_ck@700"],
+        "prcm_clockdomains": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/clockdomains"],
+        "l4_per_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_per_cm@0"],
+        "l4_per_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_per_cm@0/clk@14"],
+        "l4_wkup_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_wkup_cm@400"],
+        "l4_wkup_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_wkup_cm@400/clk@4"],
+        "mpu_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/mpu_cm@600"],
+        "mpu_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/mpu_cm@600/clk@4"],
+        "l4_rtc_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_rtc_cm@800"],
+        "l4_rtc_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_rtc_cm@800/clk@0"],
+        "gfx_l3_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/gfx_l3_cm@900"],
+        "gfx_l3_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/gfx_l3_cm@900/clk@4"],
+        "l4_cefuse_cm": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_cefuse_cm@a00"],
+        "l4_cefuse_clkctrl": ["strings", "/ocp/l4_wkup@44c00000/prcm@200000/l4_cefuse_cm@a00/clk@20"],
+        "scm": ["strings", "/ocp/l4_wkup@44c00000/scm@210000"],
+        "am33xx_pinmux": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800"],
+        "user_leds_s0": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/user_leds_s0"],
+        "i2c0_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins"],
+        "uart0_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_uart0_pins"],
+        "cpsw_default": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/cpsw_default"],
+        "cpsw_sleep": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/cpsw_sleep"],
+        "davinci_mdio_default": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/davinci_mdio_default"],
+        "davinci_mdio_sleep": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/davinci_mdio_sleep"],
+        "mmc1_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_mmc1_pins"],
+        "emmc_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_emmc_pins"],
+        "P9_19_default_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_default_pin"],
+        "P9_19_gpio_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_gpio_pin"],
+        "P9_19_gpio_pu_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_gpio_pu_pin"],
+        "P9_19_gpio_pd_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_gpio_pd_pin"],
+        "P9_19_gpio_input_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_gpio_input_pin"],
+        "P9_19_timer_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_timer_pin"],
+        "P9_19_can_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_can_pin"],
+        "P9_19_i2c_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_i2c_pin"],
+        "P9_19_spi_cs_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_spi_cs_pin"],
+        "P9_19_pru_uart_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_19_pru_uart_pin"],
+        "P9_20_default_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_default_pin"],
+        "P9_20_gpio_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_gpio_pin"],
+        "P9_20_gpio_pu_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_gpio_pu_pin"],
+        "P9_20_gpio_pd_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_gpio_pd_pin"],
+        "P9_20_gpio_input_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_gpio_input_pin"],
+        "P9_20_timer_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_timer_pin"],
+        "P9_20_can_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_can_pin"],
+        "P9_20_i2c_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_i2c_pin"],
+        "P9_20_spi_cs_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_spi_cs_pin"],
+        "P9_20_pru_uart_pin": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_P9_20_pru_uart_pin"],
+        "nxp_hdmi_bonelt_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/nxp_hdmi_bonelt_pins"],
+        "mcasp0_pins": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/pinmux@800/mcasp0_pins"],
+        "scm_conf": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0"],
+        "scm_clocks": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks"],
+        "sys_clkin_ck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sys_clkin_ck@40"],
+        "adc_tsc_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/adc_tsc_fck"],
+        "dcan0_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/dcan0_fck"],
+        "dcan1_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/dcan1_fck"],
+        "mcasp0_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/mcasp0_fck"],
+        "mcasp1_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/mcasp1_fck"],
+        "smartreflex0_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/smartreflex0_fck"],
+        "smartreflex1_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/smartreflex1_fck"],
+        "sha0_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/sha0_fck"],
+        "aes0_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/aes0_fck"],
+        "rng_fck": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/rng_fck"],
+        "ehrpwm0_tbclk": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/ehrpwm0_tbclk@44e10664"],
+        "ehrpwm1_tbclk": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/ehrpwm1_tbclk@44e10664"],
+        "ehrpwm2_tbclk": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/scm_conf@0/clocks/ehrpwm2_tbclk@44e10664"],
+        "wkup_m3_ipc": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/wkup_m3_ipc@1324"],
+        "edma_xbar": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/dma-router@f90"],
+        "scm_clockdomains": ["strings", "/ocp/l4_wkup@44c00000/scm@210000/clockdomains"],
+        "intc": ["strings", "/ocp/interrupt-controller@48200000"],
+        "edma": ["strings", "/ocp/edma@49000000"],
+        "edma_tptc0": ["strings", "/ocp/tptc@49800000"],
+        "edma_tptc1": ["strings", "/ocp/tptc@49900000"],
+        "edma_tptc2": ["strings", "/ocp/tptc@49a00000"],
+        "gpio0": ["strings", "/ocp/gpio@44e07000"],
+        "gpio1": ["strings", "/ocp/gpio@4804c000"],
+        "gpio2": ["strings", "/ocp/gpio@481ac000"],
+        "gpio3": ["strings", "/ocp/gpio@481ae000"],
+        "uart0": ["strings", "/ocp/serial@44e09000"],
+        "uart1": ["strings", "/ocp/serial@48022000"],
+        "uart2": ["strings", "/ocp/serial@48024000"],
+        "uart3": ["strings", "/ocp/serial@481a6000"],
+        "uart4": ["strings", "/ocp/serial@481a8000"],
+        "uart5": ["strings", "/ocp/serial@481aa000"],
+        "i2c0": ["strings", "/ocp/i2c@44e0b000"],
+        "tps": ["strings", "/ocp/i2c@44e0b000/tps@24"],
+        "dcdc1_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@0"],
+        "dcdc2_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@1"],
+        "dcdc3_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@2"],
+        "ldo1_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@3"],
+        "ldo2_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@4"],
+        "ldo3_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@5"],
+        "ldo4_reg": ["strings", "/ocp/i2c@44e0b000/tps@24/regulators/regulator@6"],
+        "baseboard_eeprom": ["strings", "/ocp/i2c@44e0b000/baseboard_eeprom@50"],
+        "baseboard_data": ["strings", "/ocp/i2c@44e0b000/baseboard_eeprom@50/baseboard_data@0"],
+        "tda19988": ["strings", "/ocp/i2c@44e0b000/tda19988@70"],
+        "hdmi_0": ["strings", "/ocp/i2c@44e0b000/tda19988@70/ports/port@0/endpoint@0"],
+        "i2c1": ["strings", "/ocp/i2c@4802a000"],
+        "i2c2": ["strings", "/ocp/i2c@4819c000"],
+        "cape_eeprom0": ["strings", "/ocp/i2c@4819c000/cape_eeprom0@54"],
+        "cape0_data": ["strings", "/ocp/i2c@4819c000/cape_eeprom0@54/cape_data@0"],
+        "cape_eeprom1": ["strings", "/ocp/i2c@4819c000/cape_eeprom1@55"],
+        "cape1_data": ["strings", "/ocp/i2c@4819c000/cape_eeprom1@55/cape_data@0"],
+        "cape_eeprom2": ["strings", "/ocp/i2c@4819c000/cape_eeprom2@56"],
+        "cape2_data": ["strings", "/ocp/i2c@4819c000/cape_eeprom2@56/cape_data@0"],
+        "cape_eeprom3": ["strings", "/ocp/i2c@4819c000/cape_eeprom3@57"],
+        "cape3_data": ["strings", "/ocp/i2c@4819c000/cape_eeprom3@57/cape_data@0"],
+        "mmc1": ["strings", "/ocp/mmc@48060000"],
+        "mmc2": ["strings", "/ocp/mmc@481d8000"],
+        "mmc3": ["strings", "/ocp/mmc@47810000"],
+        "hwspinlock": ["strings", "/ocp/spinlock@480ca000"],
+        "wdt2": ["strings", "/ocp/wdt@44e35000"],
+        "dcan0": ["strings", "/ocp/can@481cc000"],
+        "dcan1": ["strings", "/ocp/can@481d0000"],
+        "mailbox": ["strings", "/ocp/mailbox@480c8000"],
+        "mbox_wkupm3": ["strings", "/ocp/mailbox@480c8000/wkup_m3"],
+        "timer1": ["strings", "/ocp/timer@44e31000"],
+        "timer2": ["strings", "/ocp/timer@48040000"],
+        "timer3": ["strings", "/ocp/timer@48042000"],
+        "timer4": ["strings", "/ocp/timer@48044000"],
+        "timer5": ["strings", "/ocp/timer@48046000"],
+        "timer6": ["strings", "/ocp/timer@48048000"],
+        "timer7": ["strings", "/ocp/timer@4804a000"],
+        "rtc": ["strings", "/ocp/rtc@44e3e000"],
+        "spi0": ["strings", "/ocp/spi@48030000"],
+        "spi1": ["strings", "/ocp/spi@481a0000"],
+        "usb": ["strings", "/ocp/usb@47400000"],
+        "usb_ctrl_mod": ["strings", "/ocp/usb@47400000/control@44e10620"],
+        "usb0_phy": ["strings", "/ocp/usb@47400000/usb-phy@47401300"],
+        "usb0": ["strings", "/ocp/usb@47400000/usb@47401000"],
+        "usb1_phy": ["strings", "/ocp/usb@47400000/usb-phy@47401b00"],
+        "usb1": ["strings", "/ocp/usb@47400000/usb@47401800"],
+        "cppi41dma": ["strings", "/ocp/usb@47400000/dma-controller@47402000"],
+        "epwmss0": ["strings", "/ocp/epwmss@48300000"],
+        "ecap0": ["strings", "/ocp/epwmss@48300000/ecap@48300100"],
+        "eqep0": ["strings", "/ocp/epwmss@48300000/eqep@0x48300180"],
+        "ehrpwm0": ["strings", "/ocp/epwmss@48300000/pwm@48300200"],
+        "epwmss1": ["strings", "/ocp/epwmss@48302000"],
+        "ecap1": ["strings", "/ocp/epwmss@48302000/ecap@48302100"],
+        "eqep1": ["strings", "/ocp/epwmss@48302000/eqep@0x48302180"],
+        "ehrpwm1": ["strings", "/ocp/epwmss@48302000/pwm@48302200"],
+        "epwmss2": ["strings", "/ocp/epwmss@48304000"],
+        "ecap2": ["strings", "/ocp/epwmss@48304000/ecap@48304100"],
+        "eqep2": ["strings", "/ocp/epwmss@48304000/eqep@0x48304180"],
+        "ehrpwm2": ["strings", "/ocp/epwmss@48304000/pwm@48304200"],
+        "mac": ["strings", "/ocp/ethernet@4a100000"],
+        "davinci_mdio": ["strings", "/ocp/ethernet@4a100000/mdio@4a101000"],
+        "cpsw_emac0": ["strings", "/ocp/ethernet@4a100000/slave@4a100200"],
+        "cpsw_emac1": ["strings", "/ocp/ethernet@4a100000/slave@4a100300"],
+        "phy_sel": ["strings", "/ocp/ethernet@4a100000/cpsw-phy-sel@44e10650"],
+        "ocmcram": ["strings", "/ocp/ocmcram@40300000"],
+        "pm_sram_code": ["strings", "/ocp/ocmcram@40300000/pm-sram-code@0"],
+        "pm_sram_data": ["strings", "/ocp/ocmcram@40300000/pm-sram-data@1000"],
+        "pruss_soc_bus": ["strings", "/ocp/pruss-soc-bus@4a326004"],
+        "pruss": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000"],
+        "pruss_mem": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/memories@4a300000"],
+        "pruss_cfg": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/cfg@4a326000"],
+        "pruss_iep": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/iep@4a32e000"],
+        "pruss_mii_rt": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/mii-rt@4a332000"],
+        "pruss_intc": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/interrupt-controller@4a320000"],
+        "pru0": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/pru@4a334000"],
+        "pru1": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/pru@4a338000"],
+        "pruss_mdio": ["strings", "/ocp/pruss-soc-bus@4a326004/pruss@4a300000/mdio@4a332400"],
+        "elm": ["strings", "/ocp/elm@48080000"],
+        "lcdc": ["strings", "/ocp/lcdc@4830e000"],
+        "lcdc_0": ["strings", "/ocp/lcdc@4830e000/port/endpoint@0"],
+        "tscadc": ["strings", "/ocp/tscadc@44e0d000"],
+        "am335x_adc": ["strings", "/ocp/tscadc@44e0d000/adc"],
+        "emif": ["strings", "/ocp/emif@4c000000"],
+        "gpmc": ["strings", "/ocp/gpmc@50000000"],
+        "sham": ["strings", "/ocp/sham@53100000"],
+        "aes": ["strings", "/ocp/aes@53500000"],
+        "mcasp0": ["strings", "/ocp/mcasp@48038000"],
+        "mcasp1": ["strings", "/ocp/mcasp@4803c000"],
+        "rng": ["strings", "/ocp/rng@48310000"],
+        "sgx": ["strings", "/ocp/sgx@56000000"],
+        "vmmcsd_fixed": ["strings", "/fixedregulator0"],
+        "clk_mcasp0_fixed": ["strings", "/clk_mcasp0_fixed"],
+        "clk_mcasp0": ["strings", "/clk_mcasp0"],
+        "dailink0_master": ["strings", "/sound/simple-audio-card,cpu"]
+    }
+}
