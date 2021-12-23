@@ -14,21 +14,24 @@
 add_subdirectory("source")
 
 # ====================================================
+# Library Exports
+# ====================================================
+set(MercuryExportDir "${PROJECT_BINARY_DIR}/Mercury")
+
+# ====================================================
 # Public Headers
 # ====================================================
-set(PUB_HDR mercury_intf_inc)
-add_library(${PUB_HDR} INTERFACE)
-target_include_directories(${PUB_HDR} INTERFACE "./../" "./include")
-target_link_libraries(${PUB_HDR} INTERFACE etl_inc  )
-
-# Select the appropriate threading interface (if any)
-if(Toolchain::REQUIRES_FREERTOS_THREADS)
-  target_compile_definitions(${PUB_HDR} INTERFACE USING_FREERTOS_THREADS)
-  target_link_libraries(${PUB_HDR} INTERFACE freertos_inc)
-  target_link_libraries(${PUB_HDR} INTERFACE freertos_port)
-  target_link_libraries(${PUB_HDR} INTERFACE freertos_cfg)
-elseif(Toolchain::REQUIRES_NATIVE_THREADS)
-  target_compile_definitions(${PUB_HDR} INTERFACE USING_NATIVE_THREADS)
-endif()
-
-export(TARGETS ${PUB_HDR} FILE "${PROJECT_BINARY_DIR}/Mercury/${PUB_HDR}.cmake")
+gen_intf_lib(
+  TARGET
+    mercury_intf_inc
+  INTF_INCLUDES
+    "./../"
+    "./include"
+  INTF_LIBRARIES
+    aurora_intf_inc
+    chimera_intf_inc
+    etl_inc
+    project_inc
+  EXPORT_DIR
+    ${MercuryExportDir}
+)

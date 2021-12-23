@@ -12,15 +12,18 @@
 #ifndef MERCURY_SYSTEM_HPP
 #define MERCURY_SYSTEM_HPP
 
-/* Chimera Includes */
+/*-----------------------------------------------------------------------------
+Includes
+-----------------------------------------------------------------------------*/
+#include <filesystem>
 #include <Chimera/common>
 #include <Chimera/system>
 
 namespace Mercury::System
 {
-  /*-------------------------------------------------------------------------------
-  Public Functions
-  -------------------------------------------------------------------------------*/
+  /*---------------------------------------------------------------------------
+  Chimera Public Functions
+  ---------------------------------------------------------------------------*/
   Chimera::Status_t initialize();
   Chimera::Status_t reset();
   Chimera::Status_t systemStartup();
@@ -32,6 +35,23 @@ namespace Mercury::System
   void softwareReset();
   bool inISR();
 
+  /*---------------------------------------------------------------------------
+  Mercury Public functions
+  ---------------------------------------------------------------------------*/
+  /**
+   * @brief Assigns the platform configuration file for hardware resources
+   * See available platforms under source/dt/platforms.
+   *
+   * @param path  Path to the platform file
+   */
+  void setPlatformFile( const std::filesystem::path &path );
+
+  /**
+   * @brief Retrieves the configured platform file
+   *
+   * @return std::filesystem::path
+   */
+  std::filesystem::path getPlatformFile();
 }  // namespace Mercury::System
 
 #endif /* !MERCURY_SYSTEM_HPP */

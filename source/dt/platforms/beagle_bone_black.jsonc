@@ -1,0 +1,26 @@
+{
+  /* Configuration file for the Beagle Bone Black Rev. C */
+  "version": 0.0,
+  "peripherals": {
+    "gpio": {
+      "controllers": 4,
+      "gpio_controller_0": {
+        "name": "hello",
+        "num_pins": 12,
+        "bank": "A",
+        "pin_attributes": [
+          {
+            "number": 0,
+            "alternates": [
+              "SPI_0_MOSI"
+            ]
+          },
+          {
+            // Pin 2
+          }
+        ]
+      },
+      "gpio_controller_1": {}
+    }
+  }
+}

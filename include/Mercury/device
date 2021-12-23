@@ -1,0 +1,20 @@
+/********************************************************************************
+ *  File Name:
+ *    device
+ *
+ *  Description:
+ *    Mercury Device Tree Includes
+ *
+ *  2021 | Brandon Braun | brandonbraun653@gmail.com
+ ********************************************************************************/
+
+#pragma once
+#ifndef MERCURY_DEVICE_INCLUDES
+#define MERCURY_DEVICE_INCLUDES
+
+#include <Mercury/source/dt/device_tree.hpp>
+#include <Mercury/source/dt/device_attr.hpp>
+#include <Mercury/source/dt/attributes/device_attr_base.hpp>
+#include <Mercury/source/dt/attributes/device_attr_gpio.hpp>
+
+#endif /* !MERCURY_DEVICE_INCLUDES */
