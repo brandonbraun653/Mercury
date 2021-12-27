@@ -1,26 +1,334 @@
 {
   /* Configuration file for the Beagle Bone Black Rev. C */
   "version": 0.0,
+  "name": "Beagle Bone Black Rev. C",
   "peripherals": {
     "gpio": {
-      "controllers": 4,
-      "gpio_controller_0": {
-        "name": "hello",
-        "num_pins": 12,
-        "bank": "A",
-        "pin_attributes": [
-          {
-            "number": 0,
-            "alternates": [
-              "SPI_0_MOSI"
-            ]
-          },
-          {
-            // Pin 2
-          }
-        ]
-      },
-      "gpio_controller_1": {}
+      "num_chips": 4,
+      "num_pins": 128,
+      "controllers": {
+        // Controllers are inspected via gpiod with the 'gpioinfo' command
+        "gpiochip0": {
+          "port": "PORTA", // Chimera Port Mapping
+          "lines": 32,
+          "pins": [
+            {
+              "line": 2,
+              "name": "P9_22"
+            },
+            {
+              "line": 3,
+              "name": "P9_21"
+            },
+            {
+              "line": 4,
+              "name": "P9_18"
+            },
+            {
+              "line": 5,
+              "name": "P9_17"
+            },
+            {
+              "line": 7,
+              "name": "P9_42"
+            },
+            {
+              "line": 8,
+              "name": "P8_35"
+            },
+            {
+              "line": 9,
+              "name": "P8_33"
+            },
+            {
+              "line": 10,
+              "name": "P8_31"
+            },
+            {
+              "line": 11,
+              "name": "P8_32"
+            },
+            {
+              "line": 12,
+              "name": "P9_20"
+            },
+            {
+              "line": 13,
+              "name": "P9_19"
+            },
+            {
+              "line": 14,
+              "name": "P9_26"
+            },
+            {
+              "line": 15,
+              "name": "P9_24"
+            },
+            {
+              "line": 19,
+              "name": "A15"
+            },
+            {
+              "line": 20,
+              "name": "P9_41"
+            },
+            {
+              "line": 22,
+              "name": "P8_19"
+            },
+            {
+              "line": 23,
+              "name": "P8_13"
+            },
+            {
+              "line": 26,
+              "name": "P8_14"
+            },
+            {
+              "line": 27,
+              "name": "P8_17"
+            },
+            {
+              "line": 30,
+              "name": "P9_11"
+            },
+            {
+              "line": 31,
+              "name": "P9_13"
+            }
+          ]
+        },
+        "gpiochip1": {
+          "port": "PORTB", // Chimera Port Mapping
+          "lines": 32,
+          "pins": [
+            {
+              "line": 0,
+              "name": "P8_25"
+            },
+            {
+              "line": 1,
+              "name": "P8_24"
+            },
+            {
+              "line": 2,
+              "name": "P8_05"
+            },
+            {
+              "line": 3,
+              "name": "P8_06"
+            },
+            {
+              "line": 4,
+              "name": "P8_23"
+            },
+            {
+              "line": 5,
+              "name": "P8_22"
+            },
+            {
+              "line": 6,
+              "name": "P8_03"
+            },
+            {
+              "line": 7,
+              "name": "P8_04"
+            },
+            {
+              "line": 12,
+              "name": "P8_12"
+            },
+            {
+              "line": 13,
+              "name": "P8_11"
+            },
+            {
+              "line": 14,
+              "name": "P8_16"
+            },
+            {
+              "line": 15,
+              "name": "P8_15"
+            },
+            {
+              "line": 16,
+              "name": "P9_15"
+            },
+            {
+              "line": 17,
+              "name": "P9_23"
+            },
+            {
+              "line": 18,
+              "name": "P9_14"
+            },
+            {
+              "line": 19,
+              "name": "P9_16"
+            },
+            {
+              "line": 21,
+              "name": "usr0"
+            },
+            {
+              "line": 22,
+              "name": "usr1"
+            },
+            {
+              "line": 23,
+              "name": "usr2"
+            },
+            {
+              "line": 24,
+              "name": "usr3"
+            },
+            {
+              "line": 28,
+              "name": "P9_12"
+            },
+            {
+              "line": 29,
+              "name": "P8_26"
+            },
+            {
+              "line": 30,
+              "name": "P8_21"
+            },
+            {
+              "line": 31,
+              "name": "P8_20"
+            }
+          ]
+        },
+        "gpiochip2": {
+          "port": "PORTC", // Chimera Port Mapping
+          "lines": 32,
+          "pins": [
+            {
+              "line": 1,
+              "name": "P8_18"
+            },
+            {
+              "line": 2,
+              "name": "P8_07"
+            },
+            {
+              "line": 3,
+              "name": "P8_08"
+            },
+            {
+              "line": 4,
+              "name": "P8_10"
+            },
+            {
+              "line": 5,
+              "name": "P8_09"
+            },
+            {
+              "line": 6,
+              "name": "P8_45"
+            },
+            {
+              "line": 7,
+              "name": "P8_46"
+            },
+            {
+              "line": 8,
+              "name": "P8_43"
+            },
+            {
+              "line": 9,
+              "name": "P8_44"
+            },
+            {
+              "line": 10,
+              "name": "P8_41"
+            },
+            {
+              "line": 11,
+              "name": "P8_42"
+            },
+            {
+              "line": 12,
+              "name": "P8_39"
+            },
+            {
+              "line": 13,
+              "name": "P8_40"
+            },
+            {
+              "line": 14,
+              "name": "P8_37"
+            },
+            {
+              "line": 15,
+              "name": "P8_38"
+            },
+            {
+              "line": 16,
+              "name": "P8_36"
+            },
+            {
+              "line": 17,
+              "name": "P8_34"
+            },
+            {
+              "line": 22,
+              "name": "P8_27"
+            },
+            {
+              "line": 23,
+              "name": "P8_29"
+            },
+            {
+              "line": 24,
+              "name": "P8_28"
+            },
+            {
+              "line": 25,
+              "name": "P8_30"
+            }
+          ]
+        },
+        "gpiochip3": {
+          "port": "PORTD", // Chimera Port Mapping
+          "lines": 32,
+          "pins": [
+            {
+              "line": 14,
+              "name": "P9_31"
+            },
+            {
+              "line": 15,
+              "name": "P9_29"
+            },
+            {
+              "line": 16,
+              "name": "P9_30"
+            },
+            {
+              "line": 17,
+              "name": "P9_28"
+            },
+            {
+              "line": 18,
+              "name": "P9_92"
+            },
+            {
+              "line": 19,
+              "name": "P9_27"
+            },
+            {
+              "line": 20,
+              "name": "P9_91"
+            },
+            {
+              "line": 21,
+              "name": "P9_25"
+            }
+          ]
+        }
+      }
     }
   }
 }

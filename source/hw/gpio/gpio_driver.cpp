@@ -3,7 +3,8 @@
  *    gpio.cpp
  *
  *  Description:
- *    Mercury GPIO driver
+ *    Mercury GPIO driver based on libgpiod. Will require installation of apt
+ *    package libgpiod-dev for compiling.
  *
  *  2021 | Brandon Braun | brandonbraun653@gmail.com
  *****************************************************************************/
@@ -11,8 +12,14 @@
 /*-----------------------------------------------------------------------------
 Includes
 -----------------------------------------------------------------------------*/
+#include </usr/include/gpiod.h>
 #include <Mercury/device>
 #include <Mercury/gpio>
+
+/*-----------------------------------------------------------------------------
+Variables
+-----------------------------------------------------------------------------*/
+static Mercury::GPIO::DriverMap<Mercury::GPIO::Driver> s_raw_drivers;
 
 namespace Mercury::GPIO
 {
@@ -21,18 +28,42 @@ namespace Mercury::GPIO
   ---------------------------------------------------------------------------*/
   Chimera::Status_t initialize()
   {
-    return Chimera::Status::NOT_SUPPORTED;
+    /*-------------------------------------------------------------------------
+    Load the device tree configuration
+    -------------------------------------------------------------------------*/
+    auto cfg = Mercury::Device::loadAttributes( Chimera::Peripheral::Type::PERIPH_GPIO );
+    if( !cfg.size() )
+    {
+      return Chimera::Status::FAIL;
+    }
+
+    /*-------------------------------------------------------------------------
+    Resize and reinitialize the driver objects
+    -------------------------------------------------------------------------*/
+
+
+    return Chimera::Status::OK;
   }
 
 
   Chimera::Status_t reset()
   {
-    return Chimera::Status::NOT_SUPPORTED;
+    return Chimera::Status::OK;
   }
 
 
   Driver_rPtr getDriver( const Chimera::GPIO::Port port, const Chimera::GPIO::Pin pin )
   {
+    auto portMap = s_raw_drivers.find( port );
+    if( portMap != s_raw_drivers.end() )
+    {
+      auto pinMap = portMap->second.find( pin );
+      if( pinMap != portMap->second.end() )
+      {
+        return &portMap->second.at( pin );
+      }
+    }
+
     return nullptr;
   }
 
@@ -64,6 +95,9 @@ namespace Mercury::GPIO
 
   Chimera::Status_t Driver::init( const Chimera::GPIO::Port port, const uint8_t pin )
   {
+    // Look up the configuration from file...
+    // Grab the correct GPIO chip by name
+    // Get the line by pin
     return Chimera::Status::NOT_SUPPORTED;
   }
 

@@ -19,12 +19,13 @@ Includes
 #include <Mercury/device>
 #include <Mercury/gpio>
 #include <Mercury/system>
+#include <map>
 #include <vector>
 
 /*-----------------------------------------------------------------------------
 Variables
 -----------------------------------------------------------------------------*/
-static std::vector<Chimera::GPIO::Driver> s_raw_drivers;
+static Mercury::GPIO::DriverMap<Chimera::GPIO::Driver> s_raw_drivers;
 
 
 namespace Chimera::GPIO::Backend
@@ -46,11 +47,6 @@ namespace Chimera::GPIO::Backend
     /*-------------------------------------------------------------------------
     Resize and reinitialize the driver objects
     -------------------------------------------------------------------------*/
-    s_raw_drivers.resize( cfg.size() );
-    for( auto &driver : s_raw_drivers )
-    {
-      driver = {};
-    }
 
     return Mercury::GPIO::initialize();
   }
@@ -64,15 +60,15 @@ namespace Chimera::GPIO::Backend
 
   Chimera::GPIO::Driver_rPtr getDriver( const Port port, const Pin pin )
   {
-    const auto idx = Mercury::GPIO::getPinResourceIndex( port, pin );
-    if ( idx < s_raw_drivers.size() )
-    {
-      return &s_raw_drivers[ idx ];
-    }
-    else
-    {
+    // const auto idx = Mercury::GPIO::getPinResourceIndex( port, pin );
+    // if ( idx < s_raw_drivers.size() )
+    // {
+    //   return &s_raw_drivers[ idx ];
+    // }
+    // else
+    // {
       return nullptr;
-    }
+    //}
   }
 
   Chimera::Status_t registerDriver( Chimera::GPIO::Backend::DriverConfig &registry )

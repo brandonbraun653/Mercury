@@ -27,6 +27,7 @@ gen_intf_lib(
   INTF_INCLUDES
     "./../"
     "./include"
+    "/usr/include"  # Linux Headers
   INTF_LIBRARIES
     aurora_intf_inc
     chimera_intf_inc

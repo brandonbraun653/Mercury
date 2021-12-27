@@ -12,6 +12,12 @@
 #ifndef MERCURY_GPIO_TYPES_HPP
 #define MERCURY_GPIO_TYPES_HPP
 
+/*-----------------------------------------------------------------------------
+Includes
+-----------------------------------------------------------------------------*/
+#include <Chimera/gpio>
+#include <map>
+
 namespace Mercury::GPIO
 {
   /*---------------------------------------------------------------------------
@@ -23,6 +29,13 @@ namespace Mercury::GPIO
   Aliases
   ---------------------------------------------------------------------------*/
   using Driver_rPtr = Driver *;
+
+  template<typename DriverClass>
+  using PinDriverMap = std::map<size_t, DriverClass>;
+
+  template<typename DriverClass>
+  using DriverMap = std::map<Chimera::GPIO::Port, PinDriverMap<DriverClass>>;
+
 }  // namespace Mercury::GPIO
 
 #endif  /* !MERCURY_GPIO_TYPES_HPP */
